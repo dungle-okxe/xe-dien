@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Thông Tin Xe Điện | Yadea & VinFast</title>
+<title>Từ Điển Xe Điện | Yadea & VinFast</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -660,7 +660,7 @@ footer {
 <!-- HEADER -->
 <header class="header">
   <a class="logo" onclick="showCatalog()">
-    Thông Tin Xe Điện
+    Từ Điển Xe Điện
   </a>
   <div class="logo-divider"></div>
   <span class="logo-sub">Yadea & VinFast 2024–2025</span>
@@ -689,7 +689,7 @@ footer {
   <section class="hero">
     <div class="hero-left">
       <div class="hero-pill"><span class="pill-dot"></span> Cập nhật 2024 – 2025</div>
-      <h1>Thông Tin<br><span class="h1-accent">Yadea</span><br>& <span class="h1-accent2">VinFast</span></h1>
+      <h1>Từ điển<br><span class="h1-accent">Yadea</span><br>& <span class="h1-accent2">VinFast</span></h1>
       <p class="hero-desc">Tra cứu đầy đủ thông số kỹ thuật, giá bán và tính năng của tất cả mẫu xe điện. Dữ liệu chuẩn, luôn được cập nhật.</p>
       <div class="hero-stats" id="heroStats"></div>
     </div>
@@ -739,7 +739,7 @@ footer {
 </div>
 
 <footer>
-  <span class="footer-logo">Thông Tin Xe Điện</span>
+  <span class="footer-logo">Từ Điển Xe Điện</span>
   <span>Yadea & VinFast · Phiên bản 2024–2025 · Dữ liệu mang tính tham khảo</span>
 </footer>
 
@@ -803,7 +803,8 @@ function renderHero() {
   document.getElementById('heroCards').innerHTML = featured.map((v,i) => `
     <div class="hero-card ${i===0?'':'brand-'+v.brand}" onclick="showDetail('${v.id}')" style="cursor:pointer">
       ${i===0 ? `
-        <div class="hcard-icon">🛵</div>
+        ${v.images?.main ? `<img src="${v.images.main}" alt="${v.fullName}" style="width:80px;height:80px;object-fit:contain;flex-shrink:0" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">` : ''}
+        <div class="hcard-icon" style="${v.images?.main ? 'display:none' : ''}">🛵</div>
         <div>
           <div class="hcard-brand" style="color:${brand[v.brand].accentColor}">${v.brand.toUpperCase()}</div>
           <div class="hcard-name">${v.fullName}</div>
@@ -902,7 +903,10 @@ function renderCard(v, i) {
   return `
   <div class="vcard brand-${v.brand} fade-up" style="animation-delay:${i*.05}s" onclick="showDetail('${v.id}')">
     <div class="vcard-img">
-      <div class="vcard-img-icon">🛵</div>
+      ${v.images?.main
+        ? `<img src="${v.images.main}" alt="${v.fullName}" style="width:100%;height:100%;object-fit:contain;padding:16px;transition:transform .5s ease" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
+        : ''}
+      <div class="vcard-img-icon" style="${v.images?.main ? 'display:none' : ''}">🛵</div>
       <div class="vcard-badges">${(v.badges||[]).map(b=>`<span class="vbadge ${badgeClass(b)}">${b}</span>`).join('')}</div>
       <span class="brand-tag">${v.brand.toUpperCase()}</span>
     </div>
@@ -966,7 +970,10 @@ function showDetail(id) {
       <p class="detail-desc">${v.description}</p>
 
       <div class="detail-media brand-${v.brand}">
-        <div class="detail-media-main">🛵</div>
+        <div class="detail-media-main" style="position:relative;overflow:hidden">
+          ${v.images?.main ? `<img src="${v.images.main}" alt="${v.fullName}" style="width:100%;height:100%;object-fit:contain;padding:24px;position:absolute;inset:0" onerror="this.style.display='none'">` : ''}
+          <span style="font-size:10rem;opacity:.15">🛵</span>
+        </div>
         ${v.images?.colors?.length ? `
         <div class="detail-colors-bar">
           <span class="colors-label">Màu sắc</span>
