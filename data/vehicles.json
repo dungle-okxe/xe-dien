@@ -28,18 +28,18 @@
   },
   "vehicles": [
     {
-      "id": "yadea-g5",
-      "slug": "yadea-g5",
+      "id": "yadea-osta",
+      "slug": "yadea-osta",
       "brand": "yadea",
-      "series": "G Series",
-      "name": "G5",
-      "fullName": "Yadea G5",
+      "series": "O Series",
+      "name": "OSTA",
+      "fullName": "Yadea OSTA",
       "year": 2024,
       "status": "active",
       "tags": ["ban-chay", "lithium", "cao-cap"],
-      "badges": ["BÁN CHẠY", "2024"],
-      "tagline": "Trải nghiệm cao cấp, pin lithium bền bỉ",
-      "description": "Yadea G5 là dòng xe tay ga điện cao cấp với pin Lithium NMC, thiết kế hiện đại, tích hợp khóa thông minh NFC và kết nối App Yadea.",
+      "badges": ["BÁN CHẠY", "2026"],
+      "tagline": "Công nghệ thông thông minh thế hệ mới",
+      "description": "Khám phá YADEA Osta với thiết kế Neo-Retro cao cấp, pin Lithium đi tới 180km, TCS & HDC an toàn, tốc độ 63km/h. Lựa chọn di chuyển xanh thế hệ mới.",
       "images": {
         "main": "assets/vehicles/yadea-g5-main.jpg",
         "gallery": [
@@ -49,15 +49,15 @@
           "assets/vehicles/yadea-g5-trunk.jpg"
         ],
         "colors": [
-          { "name": "Trắng ngọc", "hex": "#F5F5F0", "image": "assets/vehicles/yadea-g5-white.jpg" },
-          { "name": "Đen bóng",   "hex": "#1A1A1A", "image": "assets/vehicles/yadea-g5-black.jpg" },
-          { "name": "Xanh navy",  "hex": "#1B3A6B", "image": "assets/vehicles/yadea-g5-blue.jpg"  },
-          { "name": "Đỏ thể thao","hex": "#C0392B", "image": "assets/vehicles/yadea-g5-red.jpg"   },
-          { "name": "Vàng ánh kim","hex": "#D4AC0D", "image": "assets/vehicles/yadea-g5-gold.jpg" }
+          { "name": "Trắng Bạc", "hex": "#F5F5F0", "image": "assets/vehicles/yadea-g5-white.jpg" },
+          { "name": "Bạc Ánh Quang",   "hex": "#1A1A1A", "image": "assets/vehicles/yadea-g5-black.jpg" },
+          { "name": "Đen Huyền",  "hex": "#1B3A6B", "image": "assets/vehicles/yadea-g5-blue.jpg"  },
+          { "name": "Xám nhung vũ","hex": "#C0392B", "image": "assets/vehicles/yadea-g5-red.jpg"   },
+          { "name": "Xám mực","hex": "#D4AC0D", "image": "assets/vehicles/yadea-g5-gold.jpg" }
         ]
       },
       "pricing": {
-        "base": 27990000,
+        "base": 27490000,
         "currency": "VND",
         "note": "Giá tham khảo, chưa bao gồm phí đăng ký",
         "variants": [
