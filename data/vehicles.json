@@ -1,1 +1,280 @@
-
+{
+  "meta": {
+    "version": "1.0",
+    "lastUpdated": "2025-03-10",
+    "totalModels": 2
+  },
+  "brands": {
+    "yadea": {
+      "id": "yadea",
+      "name": "Yadea",
+      "nameVi": "Yadea",
+      "country": "Trung Quốc",
+      "founded": 2001,
+      "description": "Thương hiệu xe điện số 1 thế giới về doanh số. Năm 2023 bán hơn 16 triệu xe điện toàn cầu.",
+      "accentColor": "#00B4D8",
+      "logo": "assets/brands/yadea-logo.png"
+    },
+    "vinfast": {
+      "id": "vinfast",
+      "name": "VinFast",
+      "nameVi": "VinFast",
+      "country": "Việt Nam",
+      "founded": 2017,
+      "description": "Thương hiệu xe điện Việt Nam duy nhất bán xe tại thị trường quốc tế. Thiết kế bởi chuyên gia Ý.",
+      "accentColor": "#E63946",
+      "logo": "assets/brands/vinfast-logo.png"
+    }
+  },
+  "vehicles": [
+    {
+      "id": "yadea-g5",
+      "slug": "yadea-g5",
+      "brand": "yadea",
+      "series": "G Series",
+      "name": "G5",
+      "fullName": "Yadea G5",
+      "year": 2024,
+      "status": "active",
+      "tags": ["ban-chay", "lithium", "cao-cap"],
+      "badges": ["BÁN CHẠY", "2024"],
+      "tagline": "Trải nghiệm cao cấp, pin lithium bền bỉ",
+      "description": "Yadea G5 là dòng xe tay ga điện cao cấp với pin Lithium NMC, thiết kế hiện đại, tích hợp khóa thông minh NFC và kết nối App Yadea.",
+      "images": {
+        "main": "assets/vehicles/yadea-g5-main.jpg",
+        "gallery": [
+          "assets/vehicles/yadea-g5-side.jpg",
+          "assets/vehicles/yadea-g5-front.jpg",
+          "assets/vehicles/yadea-g5-dash.jpg",
+          "assets/vehicles/yadea-g5-trunk.jpg"
+        ],
+        "colors": [
+          { "name": "Trắng ngọc", "hex": "#F5F5F0", "image": "assets/vehicles/yadea-g5-white.jpg" },
+          { "name": "Đen bóng",   "hex": "#1A1A1A", "image": "assets/vehicles/yadea-g5-black.jpg" },
+          { "name": "Xanh navy",  "hex": "#1B3A6B", "image": "assets/vehicles/yadea-g5-blue.jpg"  },
+          { "name": "Đỏ thể thao","hex": "#C0392B", "image": "assets/vehicles/yadea-g5-red.jpg"   },
+          { "name": "Vàng ánh kim","hex": "#D4AC0D", "image": "assets/vehicles/yadea-g5-gold.jpg" }
+        ]
+      },
+      "pricing": {
+        "base": 27990000,
+        "currency": "VND",
+        "note": "Giá tham khảo, chưa bao gồm phí đăng ký",
+        "variants": [
+          { "name": "Tiêu chuẩn", "price": 27990000 }
+        ]
+      },
+      "rating": { "score": 4.8, "count": 1200 },
+      "specs": {
+        "performance": {
+          "label": "Vận hành",
+          "fields": {
+            "topSpeed":       { "label": "Tốc độ tối đa",         "value": 70,      "unit": "km/h"  },
+            "range":          { "label": "Quãng đường/sạc",        "value": 100,     "unit": "km"    },
+            "motorPower":     { "label": "Công suất động cơ",      "value": 1200,    "unit": "W"     },
+            "peakPower":      { "label": "Công suất đỉnh",         "value": null,    "unit": "W"     },
+            "torque":         { "label": "Mô-men xoắn cực đại",   "value": 55,      "unit": "N·m"   },
+            "motorType":      { "label": "Loại động cơ",           "value": "Hub Motor BLDC", "unit": "" },
+            "driveMode":      { "label": "Chế độ lái",             "value": "Eco / Standard", "unit": "" }
+          }
+        },
+        "battery": {
+          "label": "Pin & Sạc",
+          "fields": {
+            "batteryType":    { "label": "Loại pin",               "value": "Lithium NMC",    "unit": ""     },
+            "voltage":        { "label": "Điện áp",                "value": 60,               "unit": "V"    },
+            "capacity":       { "label": "Dung lượng",             "value": 26,               "unit": "Ah"   },
+            "totalWh":        { "label": "Tổng năng lượng",        "value": null,             "unit": "Wh"   },
+            "chargeTimeFull": { "label": "Thời gian sạc đầy",      "value": "6–8",            "unit": "giờ"  },
+            "chargeTimeFast": { "label": "Sạc nhanh (80%)",        "value": null,             "unit": "giờ"  },
+            "cycleLife":      { "label": "Tuổi thọ pin",           "value": "≥1.000 chu kỳ", "unit": ""     },
+            "removable":      { "label": "Pin tháo rời",           "value": false,            "unit": ""     }
+          }
+        },
+        "dimensions": {
+          "label": "Kích thước & Trọng lượng",
+          "fields": {
+            "length":         { "label": "Chiều dài",              "value": 1905,  "unit": "mm"  },
+            "width":          { "label": "Chiều rộng",             "value": 700,   "unit": "mm"  },
+            "height":         { "label": "Chiều cao",              "value": 1115,  "unit": "mm"  },
+            "wheelbase":      { "label": "Chiều dài cơ sở",        "value": null,  "unit": "mm"  },
+            "seatHeight":     { "label": "Chiều cao yên",          "value": 765,   "unit": "mm"  },
+            "groundClear":    { "label": "Khoảng sáng gầm",        "value": null,  "unit": "mm"  },
+            "weight":         { "label": "Trọng lượng xe",         "value": 102,   "unit": "kg"  },
+            "maxLoad":        { "label": "Tải trọng tối đa",       "value": 150,   "unit": "kg"  }
+          }
+        },
+        "chassis": {
+          "label": "Khung & Phanh",
+          "fields": {
+            "frontTire":      { "label": "Lốp trước",              "value": "100/80-14", "unit": "" },
+            "rearTire":       { "label": "Lốp sau",                "value": "110/80-14", "unit": "" },
+            "frontBrake":     { "label": "Phanh trước",            "value": "Đĩa CBS",   "unit": "" },
+            "rearBrake":      { "label": "Phanh sau",              "value": "Đĩa CBS",   "unit": "" },
+            "abs":            { "label": "Phanh ABS",              "value": false,        "unit": "" },
+            "frontSusp":      { "label": "Giảm xóc trước",         "value": null,         "unit": "" },
+            "rearSusp":       { "label": "Giảm xóc sau",           "value": null,         "unit": "" }
+          }
+        },
+        "features": {
+          "label": "Trang bị & Tiện nghi",
+          "fields": {
+            "lighting":       { "label": "Đèn chiếu sáng",         "value": "LED toàn phần", "unit": ""    },
+            "drl":            { "label": "Đèn DRL ban ngày",        "value": null,             "unit": ""    },
+            "display":        { "label": "Màn hình",                "value": "LCD TFT 5\"",    "unit": ""    },
+            "bluetooth":      { "label": "Bluetooth",               "value": true,             "unit": ""    },
+            "wifi":           { "label": "WiFi",                    "value": false,            "unit": ""    },
+            "esim":           { "label": "eSIM / 4G",               "value": false,            "unit": ""    },
+            "gps":            { "label": "GPS tích hợp",            "value": false,            "unit": ""    },
+            "app":            { "label": "Kết nối App",             "value": "App Yadea",      "unit": ""    },
+            "smartLock":      { "label": "Khóa thông minh",         "value": "NFC",            "unit": ""    },
+            "fingerprint":    { "label": "Mở khoá vân tay",         "value": false,            "unit": ""    },
+            "usbCharge":      { "label": "Cổng sạc USB",            "value": null,             "unit": ""    },
+            "trunkVolume":    { "label": "Cốp xe",                  "value": 28,               "unit": "lít" },
+            "waterproof":     { "label": "Chống nước",              "value": "IP67",           "unit": ""    }
+          }
+        },
+        "warranty": {
+          "label": "Bảo hành",
+          "fields": {
+            "vehicle":        { "label": "Bảo hành xe",             "value": "2 năm / 30.000 km", "unit": "" },
+            "battery":        { "label": "Bảo hành pin",            "value": "3 năm",             "unit": "" },
+            "motor":          { "label": "Bảo hành động cơ",        "value": null,                "unit": "" }
+          }
+        }
+      },
+      "highlights": [
+        "Pin Lithium NMC — nhẹ hơn, tuổi thọ cao hơn pin Axit chì",
+        "Chống nước IP67 — an tâm đi trong mưa, ngập nước nông",
+        "Khóa NFC thông minh — mở khoá bằng thẻ, không cần chìa",
+        "Kết nối App Yadea — theo dõi hành trình, kiểm tra pin từ xa",
+        "Phanh CBS đôi — an toàn khi phanh gấp"
+      ],
+      "pros": ["Giá hợp lý cho phân khúc", "Pin bền, quãng đường tốt", "IP67 tốt nhất tầm giá"],
+      "cons": ["Không có eSIM/GPS", "Sạc chậm hơn G6"]
+    },
+    {
+      "id": "vinfast-theon-s",
+      "slug": "vinfast-theon-s",
+      "brand": "vinfast",
+      "series": "Theon Series",
+      "name": "Theon S",
+      "fullName": "VinFast Theon S",
+      "year": 2024,
+      "status": "active",
+      "tags": ["cao-cap", "esim", "flagship", "lithium"],
+      "badges": ["FLAGSHIP", "2024"],
+      "tagline": "Đẳng cấp châu Âu – Giá trị Việt Nam",
+      "description": "VinFast Theon S là xe tay ga điện cao cấp nhất của VinFast, thiết kế bởi chuyên gia Ý, tích hợp eSIM 4G, GPS, màn hình cảm ứng 7 inch và bảo hành pin 5 năm.",
+      "images": {
+        "main": "assets/vehicles/vinfast-theon-s-main.jpg",
+        "gallery": [],
+        "colors": [
+          { "name": "Trắng ngọc",  "hex": "#F0EEE8", "image": "" },
+          { "name": "Đen",         "hex": "#1C1C1C",  "image": "" },
+          { "name": "Đỏ",          "hex": "#C0392B",  "image": "" },
+          { "name": "Xanh dương",  "hex": "#1A3A6B",  "image": "" },
+          { "name": "Vàng kem",    "hex": "#D4AC0D",  "image": "" },
+          { "name": "Xám bạc",     "hex": "#8E9298",  "image": "" }
+        ]
+      },
+      "pricing": {
+        "base": 55900000,
+        "currency": "VND",
+        "note": "Giá tham khảo, chưa bao gồm phí đăng ký",
+        "variants": [
+          { "name": "Tiêu chuẩn", "price": 55900000 }
+        ]
+      },
+      "rating": { "score": 4.8, "count": 650 },
+      "specs": {
+        "performance": {
+          "label": "Vận hành",
+          "fields": {
+            "topSpeed":       { "label": "Tốc độ tối đa",         "value": 79,    "unit": "km/h"   },
+            "range":          { "label": "Quãng đường/sạc",        "value": 134,   "unit": "km"     },
+            "motorPower":     { "label": "Công suất động cơ",      "value": 3800,  "unit": "W"      },
+            "peakPower":      { "label": "Công suất đỉnh",         "value": 5000,  "unit": "W"      },
+            "torque":         { "label": "Mô-men xoắn cực đại",   "value": 90,    "unit": "N·m"    },
+            "motorType":      { "label": "Loại động cơ",           "value": "BLDC 3-phase Hub Motor", "unit": "" },
+            "driveMode":      { "label": "Chế độ lái",             "value": "Eco / Standard / Sport", "unit": "" }
+          }
+        },
+        "battery": {
+          "label": "Pin & Sạc",
+          "fields": {
+            "batteryType":    { "label": "Loại pin",               "value": "Lithium-ion NMC",    "unit": ""    },
+            "voltage":        { "label": "Điện áp",                "value": 72,                   "unit": "V"   },
+            "capacity":       { "label": "Dung lượng",             "value": 30,                   "unit": "Ah"  },
+            "totalWh":        { "label": "Tổng năng lượng",        "value": 2160,                 "unit": "Wh"  },
+            "chargeTimeFull": { "label": "Thời gian sạc đầy",      "value": "6.5",                "unit": "giờ" },
+            "chargeTimeFast": { "label": "Sạc nhanh (20→80%)",     "value": "3.5",                "unit": "giờ" },
+            "cycleLife":      { "label": "Tuổi thọ pin",           "value": null,                 "unit": ""    },
+            "removable":      { "label": "Pin tháo rời",           "value": false,                "unit": ""    }
+          }
+        },
+        "dimensions": {
+          "label": "Kích thước & Trọng lượng",
+          "fields": {
+            "length":         { "label": "Chiều dài",              "value": 1885,  "unit": "mm" },
+            "width":          { "label": "Chiều rộng",             "value": 750,   "unit": "mm" },
+            "height":         { "label": "Chiều cao",              "value": 1140,  "unit": "mm" },
+            "wheelbase":      { "label": "Chiều dài cơ sở",        "value": 1330,  "unit": "mm" },
+            "seatHeight":     { "label": "Chiều cao yên",          "value": 795,   "unit": "mm" },
+            "groundClear":    { "label": "Khoảng sáng gầm",        "value": 155,   "unit": "mm" },
+            "weight":         { "label": "Trọng lượng xe",         "value": 125,   "unit": "kg" },
+            "maxLoad":        { "label": "Tải trọng tối đa",       "value": 150,   "unit": "kg" }
+          }
+        },
+        "chassis": {
+          "label": "Khung & Phanh",
+          "fields": {
+            "frontTire":      { "label": "Lốp trước",              "value": "110/70-13",       "unit": "" },
+            "rearTire":       { "label": "Lốp sau",                "value": "130/70-13",       "unit": "" },
+            "frontBrake":     { "label": "Phanh trước",            "value": "Đĩa 240mm + CBS", "unit": "" },
+            "rearBrake":      { "label": "Phanh sau",              "value": "Đĩa 220mm + CBS", "unit": "" },
+            "abs":            { "label": "Phanh ABS",              "value": false,              "unit": "" },
+            "frontSusp":      { "label": "Giảm xóc trước",         "value": "Phuộc lồng đôi",  "unit": "" },
+            "rearSusp":       { "label": "Giảm xóc sau",           "value": "Giảm xóc đôi",    "unit": "" }
+          }
+        },
+        "features": {
+          "label": "Trang bị & Tiện nghi",
+          "fields": {
+            "lighting":       { "label": "Đèn chiếu sáng",         "value": "LED Full + DRL tự động", "unit": ""    },
+            "drl":            { "label": "Đèn DRL ban ngày",        "value": true,                     "unit": ""    },
+            "display":        { "label": "Màn hình",                "value": "TFT 7\" cảm ứng",        "unit": ""    },
+            "bluetooth":      { "label": "Bluetooth",               "value": "5.0",                    "unit": ""    },
+            "wifi":           { "label": "WiFi",                    "value": true,                     "unit": ""    },
+            "esim":           { "label": "eSIM / 4G",               "value": true,                     "unit": ""    },
+            "gps":            { "label": "GPS tích hợp",            "value": true,                     "unit": ""    },
+            "app":            { "label": "Kết nối App",             "value": "App VinFast",            "unit": ""    },
+            "smartLock":      { "label": "Khóa thông minh",         "value": "NFC + Từ xa",            "unit": ""    },
+            "fingerprint":    { "label": "Mở khoá vân tay",         "value": false,                    "unit": ""    },
+            "usbCharge":      { "label": "Cổng sạc USB",            "value": "USB-C 18W",              "unit": ""    },
+            "trunkVolume":    { "label": "Cốp xe",                  "value": 30,                       "unit": "lít" },
+            "waterproof":     { "label": "Chống nước",              "value": "IP67",                   "unit": ""    }
+          }
+        },
+        "warranty": {
+          "label": "Bảo hành",
+          "fields": {
+            "vehicle":        { "label": "Bảo hành xe",             "value": "3 năm / 60.000 km",    "unit": "" },
+            "battery":        { "label": "Bảo hành pin",            "value": "5 năm / 100.000 km",   "unit": "" },
+            "motor":          { "label": "Bảo hành động cơ",        "value": null,                   "unit": "" }
+          }
+        }
+      },
+      "highlights": [
+        "Thiết kế bởi chuyên gia Ý — thẩm mỹ châu Âu, tinh tế từng chi tiết",
+        "eSIM 4G tích hợp — kết nối liên tục không cần điện thoại đi kèm",
+        "Màn hình cảm ứng 7 inch — bản đồ, âm nhạc, thông báo điện thoại",
+        "Động cơ 3.800W / đỉnh 5.000W — mạnh nhất phân khúc xe điện đô thị",
+        "Quãng đường 134km WMTC — xa nhất dòng VinFast xe máy điện",
+        "Bảo hành pin 5 năm / 100.000km — cam kết dài hạn từ nhà sản xuất"
+      ],
+      "pros": ["Thiết kế đẹp chuẩn Ý", "eSIM + GPS đầy đủ", "Quãng đường xa nhất", "Bảo hành tốt nhất"],
+      "cons": ["Giá cao nhất phân khúc", "Nặng 125kg"]
+    }
+  ]
+}
