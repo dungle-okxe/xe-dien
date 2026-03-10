@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0",
-    "lastUpdated": "2025-03-10",
+    "lastUpdated": "2026-03-10",
     "totalModels": 2
   },
   "brands": {
@@ -31,250 +31,782 @@
       "id": "yadea-osta",
       "slug": "yadea-osta",
       "brand": "yadea",
-      "series": "O Series",
-      "name": "OSTA",
-      "fullName": "Yadea OSTA",
-      "year": 2024,
+      "series": "Osta Series",
+      "name": "Osta",
+      "fullName": "Yadea Osta",
+      "year": 2026,
       "status": "active",
-      "tags": ["ban-chay", "lithium", "cao-cap"],
-      "badges": ["BÁN CHẠY", "2026"],
-      "tagline": "Công nghệ thông thông minh thế hệ mới",
-      "description": "Khám phá YADEA Osta với thiết kế Neo-Retro cao cấp, pin Lithium đi tới 180km, TCS & HDC an toàn, tốc độ 63km/h. Lựa chọn di chuyển xanh thế hệ mới.",
+      "tags": [
+        "flagship",
+        "neo-retro",
+        "lithium",
+        "tcs",
+        "gps",
+        "cao-cap"
+      ],
+      "badges": [
+        "MỚI 2026",
+        "FLAGSHIP"
+      ],
+      "tagline": "Phong cách Neo-Retro, công nghệ cao cấp như ô tô",
+      "description": "Yadea Osta là xe máy điện flagship của Yadea tại Việt Nam, ra mắt ngày 1/3/2026 tại nhà máy mới Bắc Ninh. Thiết kế Neo-Retro kết hợp nét cổ điển và hiện đại, tích hợp TCS, HDC, GPS, màn hình TFT Full-color kết nối điện thoại và khóa thông minh EasyGO.",
       "images": {
-        "main": "assets/vehicles/yadea-g5-main.jpg",
-        "gallery": [
-          "assets/vehicles/yadea-g5-side.jpg",
-          "assets/vehicles/yadea-g5-front.jpg",
-          "assets/vehicles/yadea-g5-dash.jpg",
-          "assets/vehicles/yadea-g5-trunk.jpg"
-        ],
+        "main": "assets/vehicles/yadea-osta-main.jpg",
+        "gallery": [],
         "colors": [
-          { "name": "Trắng Bạc", "hex": "#F5F5F0", "image": "assets/vehicles/yadea-g5-white.jpg" },
-          { "name": "Bạc Ánh Quang",   "hex": "#1A1A1A", "image": "assets/vehicles/yadea-g5-black.jpg" },
-          { "name": "Đen Huyền",  "hex": "#1B3A6B", "image": "assets/vehicles/yadea-g5-blue.jpg"  },
-          { "name": "Xám nhung vũ","hex": "#C0392B", "image": "assets/vehicles/yadea-g5-red.jpg"   },
-          { "name": "Xám mực","hex": "#D4AC0D", "image": "assets/vehicles/yadea-g5-gold.jpg" }
+          {
+            "name": "Trắng sữa",
+            "hex": "#F5F0E8",
+            "image": ""
+          },
+          {
+            "name": "Đen mờ",
+            "hex": "#1C1C1C",
+            "image": ""
+          },
+          {
+            "name": "Xanh rêu",
+            "hex": "#4A5C3F",
+            "image": ""
+          },
+          {
+            "name": "Be kem",
+            "hex": "#D4C4A0",
+            "image": ""
+          },
+          {
+            "name": "Xám bạc",
+            "hex": "#9CA3AF",
+            "image": ""
+          }
         ]
       },
       "pricing": {
         "base": 27490000,
         "currency": "VND",
-        "note": "Giá tham khảo, chưa bao gồm phí đăng ký",
+        "note": "Giá đã bao gồm VAT. Osta H+: 27,49 triệu | Osta P: 31,99 triệu",
         "variants": [
-          { "name": "Tiêu chuẩn", "price": 27990000 }
+          {
+            "name": "Osta H+ (72V30Ah / 120km)",
+            "price": 27490000
+          },
+          {
+            "name": "Osta P (72V45Ah / 180km)",
+            "price": 31990000
+          }
         ]
       },
-      "rating": { "score": 4.8, "count": 1200 },
+      "rating": {
+        "score": 4.7,
+        "count": 320
+      },
       "specs": {
         "performance": {
           "label": "Vận hành",
           "fields": {
-            "topSpeed":       { "label": "Tốc độ tối đa",         "value": 70,      "unit": "km/h"  },
-            "range":          { "label": "Quãng đường/sạc",        "value": 100,     "unit": "km"    },
-            "motorPower":     { "label": "Công suất động cơ",      "value": 1200,    "unit": "W"     },
-            "peakPower":      { "label": "Công suất đỉnh",         "value": null,    "unit": "W"     },
-            "torque":         { "label": "Mô-men xoắn cực đại",   "value": 55,      "unit": "N·m"   },
-            "motorType":      { "label": "Loại động cơ",           "value": "Hub Motor BLDC", "unit": "" },
-            "driveMode":      { "label": "Chế độ lái",             "value": "Eco / Standard", "unit": "" }
+            "topSpeed": {
+              "label": "Tốc độ tối đa",
+              "value": 65,
+              "unit": "km/h"
+            },
+            "range": {
+              "label": "Quãng đường/sạc",
+              "value": 180,
+              "unit": "km"
+            },
+            "motorPower": {
+              "label": "Công suất động cơ",
+              "value": 1500,
+              "unit": "W"
+            },
+            "peakPower": {
+              "label": "Công suất đỉnh",
+              "value": 2750,
+              "unit": "W"
+            },
+            "torque": {
+              "label": "Mô-men xoắn",
+              "value": null,
+              "unit": "N·m"
+            },
+            "motorType": {
+              "label": "Loại động cơ",
+              "value": "Hub-motor TTFAR",
+              "unit": ""
+            },
+            "driveMode": {
+              "label": "Chế độ lái",
+              "value": "Eco / Free / Sport",
+              "unit": ""
+            }
           }
         },
         "battery": {
           "label": "Pin & Sạc",
           "fields": {
-            "batteryType":    { "label": "Loại pin",               "value": "Lithium NMC",    "unit": ""     },
-            "voltage":        { "label": "Điện áp",                "value": 60,               "unit": "V"    },
-            "capacity":       { "label": "Dung lượng",             "value": 26,               "unit": "Ah"   },
-            "totalWh":        { "label": "Tổng năng lượng",        "value": null,             "unit": "Wh"   },
-            "chargeTimeFull": { "label": "Thời gian sạc đầy",      "value": "6–8",            "unit": "giờ"  },
-            "chargeTimeFast": { "label": "Sạc nhanh (80%)",        "value": null,             "unit": "giờ"  },
-            "cycleLife":      { "label": "Tuổi thọ pin",           "value": "≥1.000 chu kỳ", "unit": ""     },
-            "removable":      { "label": "Pin tháo rời",           "value": false,            "unit": ""     }
+            "batteryType": {
+              "label": "Loại pin",
+              "value": "Lithium-ion",
+              "unit": ""
+            },
+            "voltage": {
+              "label": "Điện áp",
+              "value": 72,
+              "unit": "V"
+            },
+            "capacity": {
+              "label": "Dung lượng (bản P)",
+              "value": 45,
+              "unit": "Ah"
+            },
+            "totalWh": {
+              "label": "Tổng năng lượng",
+              "value": 3240,
+              "unit": "Wh"
+            },
+            "chargeTimeFull": {
+              "label": "Thời gian sạc đầy",
+              "value": null,
+              "unit": "giờ"
+            },
+            "chargeTimeFast": {
+              "label": "Sạc nhanh",
+              "value": null,
+              "unit": "giờ"
+            },
+            "cycleLife": {
+              "label": "Tuổi thọ pin",
+              "value": "≥1.200 chu kỳ",
+              "unit": ""
+            },
+            "removable": {
+              "label": "Pin tháo rời",
+              "value": true,
+              "unit": ""
+            }
           }
         },
         "dimensions": {
-          "label": "Kích thước & Trọng lượng",
+          "label": "Kích thước",
           "fields": {
-            "length":         { "label": "Chiều dài",              "value": 1905,  "unit": "mm"  },
-            "width":          { "label": "Chiều rộng",             "value": 700,   "unit": "mm"  },
-            "height":         { "label": "Chiều cao",              "value": 1115,  "unit": "mm"  },
-            "wheelbase":      { "label": "Chiều dài cơ sở",        "value": null,  "unit": "mm"  },
-            "seatHeight":     { "label": "Chiều cao yên",          "value": 765,   "unit": "mm"  },
-            "groundClear":    { "label": "Khoảng sáng gầm",        "value": null,  "unit": "mm"  },
-            "weight":         { "label": "Trọng lượng xe",         "value": 102,   "unit": "kg"  },
-            "maxLoad":        { "label": "Tải trọng tối đa",       "value": 150,   "unit": "kg"  }
+            "length": {
+              "label": "Chiều dài",
+              "value": 1910,
+              "unit": "mm"
+            },
+            "width": {
+              "label": "Chiều rộng",
+              "value": 710,
+              "unit": "mm"
+            },
+            "height": {
+              "label": "Chiều cao",
+              "value": 1340,
+              "unit": "mm"
+            },
+            "wheelbase": {
+              "label": "Chiều dài cơ sở",
+              "value": null,
+              "unit": "mm"
+            },
+            "seatHeight": {
+              "label": "Chiều cao yên",
+              "value": 770,
+              "unit": "mm"
+            },
+            "groundClear": {
+              "label": "Khoảng sáng gầm",
+              "value": null,
+              "unit": "mm"
+            },
+            "weight": {
+              "label": "Trọng lượng",
+              "value": 92,
+              "unit": "kg"
+            },
+            "maxLoad": {
+              "label": "Tải trọng tối đa",
+              "value": null,
+              "unit": "kg"
+            }
           }
         },
         "chassis": {
           "label": "Khung & Phanh",
           "fields": {
-            "frontTire":      { "label": "Lốp trước",              "value": "100/80-14", "unit": "" },
-            "rearTire":       { "label": "Lốp sau",                "value": "110/80-14", "unit": "" },
-            "frontBrake":     { "label": "Phanh trước",            "value": "Đĩa CBS",   "unit": "" },
-            "rearBrake":      { "label": "Phanh sau",              "value": "Đĩa CBS",   "unit": "" },
-            "abs":            { "label": "Phanh ABS",              "value": false,        "unit": "" },
-            "frontSusp":      { "label": "Giảm xóc trước",         "value": null,         "unit": "" },
-            "rearSusp":       { "label": "Giảm xóc sau",           "value": null,         "unit": "" }
+            "frontTire": {
+              "label": "Lốp trước",
+              "value": null,
+              "unit": ""
+            },
+            "rearTire": {
+              "label": "Lốp sau",
+              "value": null,
+              "unit": ""
+            },
+            "frontBrake": {
+              "label": "Phanh trước",
+              "value": "Đĩa",
+              "unit": ""
+            },
+            "rearBrake": {
+              "label": "Phanh sau",
+              "value": "Đĩa",
+              "unit": ""
+            },
+            "abs": {
+              "label": "ABS",
+              "value": false,
+              "unit": ""
+            },
+            "frontSusp": {
+              "label": "Giảm xóc trước",
+              "value": null,
+              "unit": ""
+            },
+            "rearSusp": {
+              "label": "Giảm xóc sau",
+              "value": null,
+              "unit": ""
+            }
           }
         },
         "features": {
-          "label": "Trang bị & Tiện nghi",
+          "label": "Trang bị",
           "fields": {
-            "lighting":       { "label": "Đèn chiếu sáng",         "value": "LED toàn phần", "unit": ""    },
-            "drl":            { "label": "Đèn DRL ban ngày",        "value": null,             "unit": ""    },
-            "display":        { "label": "Màn hình",                "value": "LCD TFT 5\"",    "unit": ""    },
-            "bluetooth":      { "label": "Bluetooth",               "value": true,             "unit": ""    },
-            "wifi":           { "label": "WiFi",                    "value": false,            "unit": ""    },
-            "esim":           { "label": "eSIM / 4G",               "value": false,            "unit": ""    },
-            "gps":            { "label": "GPS tích hợp",            "value": false,            "unit": ""    },
-            "app":            { "label": "Kết nối App",             "value": "App Yadea",      "unit": ""    },
-            "smartLock":      { "label": "Khóa thông minh",         "value": "NFC",            "unit": ""    },
-            "fingerprint":    { "label": "Mở khoá vân tay",         "value": false,            "unit": ""    },
-            "usbCharge":      { "label": "Cổng sạc USB",            "value": null,             "unit": ""    },
-            "trunkVolume":    { "label": "Cốp xe",                  "value": 28,               "unit": "lít" },
-            "waterproof":     { "label": "Chống nước",              "value": "IP67",           "unit": ""    }
+            "lighting": {
+              "label": "Đèn chiếu sáng",
+              "value": "LED lục giác, cảm biến tự động, tầm chiếu 50m",
+              "unit": ""
+            },
+            "drl": {
+              "label": "Đèn DRL",
+              "value": null,
+              "unit": ""
+            },
+            "display": {
+              "label": "Màn hình",
+              "value": "TFT Full-color, chống chói",
+              "unit": ""
+            },
+            "bluetooth": {
+              "label": "Bluetooth",
+              "value": true,
+              "unit": ""
+            },
+            "wifi": {
+              "label": "WiFi",
+              "value": false,
+              "unit": ""
+            },
+            "esim": {
+              "label": "eSIM / 4G",
+              "value": false,
+              "unit": ""
+            },
+            "gps": {
+              "label": "GPS tích hợp",
+              "value": true,
+              "unit": ""
+            },
+            "app": {
+              "label": "Kết nối App",
+              "value": "App Yadea",
+              "unit": ""
+            },
+            "smartLock": {
+              "label": "Khóa thông minh",
+              "value": "EasyGO Smart Key (Bluetooth + App)",
+              "unit": ""
+            },
+            "fingerprint": {
+              "label": "Vân tay",
+              "value": false,
+              "unit": ""
+            },
+            "usbCharge": {
+              "label": "Cổng sạc USB",
+              "value": "2x USB",
+              "unit": ""
+            },
+            "trunkVolume": {
+              "label": "Cốp xe",
+              "value": null,
+              "unit": "lít"
+            },
+            "waterproof": {
+              "label": "Chống nước pin",
+              "value": "IPX7",
+              "unit": ""
+            },
+            "tcs": {
+              "label": "Kiểm soát lực kéo (TCS)",
+              "value": true,
+              "unit": ""
+            },
+            "hdc": {
+              "label": "Hỗ trợ đổ đèo (HDC)",
+              "value": true,
+              "unit": ""
+            },
+            "hillHold": {
+              "label": "Giữ phanh ngang dốc",
+              "value": true,
+              "unit": ""
+            },
+            "hazard": {
+              "label": "Đèn hazard tự động khi phanh gấp",
+              "value": true,
+              "unit": ""
+            },
+            "ota": {
+              "label": "Cập nhật OTA",
+              "value": true,
+              "unit": ""
+            },
+            "navMirror": {
+              "label": "Phản chiếu bản đồ",
+              "value": true,
+              "unit": ""
+            }
           }
         },
         "warranty": {
           "label": "Bảo hành",
           "fields": {
-            "vehicle":        { "label": "Bảo hành xe",             "value": "2 năm / 30.000 km", "unit": "" },
-            "battery":        { "label": "Bảo hành pin",            "value": "3 năm",             "unit": "" },
-            "motor":          { "label": "Bảo hành động cơ",        "value": null,                "unit": "" }
+            "vehicle": {
+              "label": "Bảo hành xe",
+              "value": null,
+              "unit": ""
+            },
+            "battery": {
+              "label": "Bảo hành pin",
+              "value": null,
+              "unit": ""
+            },
+            "motor": {
+              "label": "Bảo hành động cơ",
+              "value": null,
+              "unit": ""
+            }
           }
         }
       },
       "highlights": [
-        "Pin Lithium NMC — nhẹ hơn, tuổi thọ cao hơn pin Axit chì",
-        "Chống nước IP67 — an tâm đi trong mưa, ngập nước nông",
-        "Khóa NFC thông minh — mở khoá bằng thẻ, không cần chìa",
-        "Kết nối App Yadea — theo dõi hành trình, kiểm tra pin từ xa",
-        "Phanh CBS đôi — an toàn khi phanh gấp"
+        "Thiết kế Neo-Retro — phong cách cổ điển hiện đại, sơn kháng UV chuẩn ô tô",
+        "Quãng đường 180km/sạc — phiên bản P đủ chạy Hà Nội–Hạ Long không cần sạc",
+        "TCS + HDC + Hill-hold — 3 hệ thống an toàn lần đầu có trên xe điện tầm giá",
+        "Màn hình TFT Full-color — phản chiếu bản đồ, nghe nhạc, đàm thoại rảnh tay",
+        "GPS tích hợp + định vị từ xa — cảnh báo chuyển động, hàng rào điện tử",
+        "EasyGO Smart Key — mở khóa Bluetooth, không cần chìa, cập nhật OTA",
+        "Pin tháo rời — hỗ trợ đổi pin nhanh (phiên bản pin rời)",
+        "BMS hiển thị pin chính xác đến 1% — dự đoán thời gian sạc theo thời gian thực"
       ],
-      "pros": ["Giá hợp lý cho phân khúc", "Pin bền, quãng đường tốt", "IP67 tốt nhất tầm giá"],
-      "cons": ["Không có eSIM/GPS", "Sạc chậm hơn G6"]
+      "pros": [
+        "Giá từ 27,49 triệu — ngang Honda Vision nhưng điện",
+        "TCS/HDC/Hill-hold — tính năng an toàn hiếm có tầm giá",
+        "Quãng đường 180km xa nhất phân khúc",
+        "Màn hình TFT + GPS + bản đồ",
+        "Pin tháo rời — tiện đổi pin"
+      ],
+      "cons": [
+        "Chưa có ABS",
+        "Thông tin bảo hành chưa công bố đầy đủ",
+        "Pin tháo rời cần thao tác phức tạp hơn VinFast"
+      ]
     },
     {
-      "id": "vinfast-theon-s",
-      "slug": "vinfast-theon-s",
+      "id": "vinfast-feliz-ii",
+      "slug": "vinfast-feliz-ii",
       "brand": "vinfast",
-      "series": "Theon Series",
-      "name": "Theon S",
-      "fullName": "VinFast Theon S",
-      "year": 2024,
+      "series": "Feliz Series",
+      "name": "Feliz II",
+      "fullName": "VinFast Feliz II",
+      "year": 2026,
       "status": "active",
-      "tags": ["cao-cap", "esim", "flagship", "lithium"],
-      "badges": ["FLAGSHIP", "2024"],
-      "tagline": "Đẳng cấp châu Âu – Giá trị Việt Nam",
-      "description": "VinFast Theon S là xe tay ga điện cao cấp nhất của VinFast, thiết kế bởi chuyên gia Ý, tích hợp eSIM 4G, GPS, màn hình cảm ứng 7 inch và bảo hành pin 5 năm.",
+      "tags": [
+        "pho-thong",
+        "lfp",
+        "doi-pin",
+        "2-pin",
+        "do-thi"
+      ],
+      "badges": [
+        "MỚI 2026",
+        "ĐỔI PIN"
+      ],
+      "tagline": "Xe đô thị thực dụng — đổi pin tại trạm, đi xa không lo hết điện",
+      "description": "VinFast Feliz II là xe máy điện phổ thông thế hệ mới 2026, kế thừa thiết kế thanh lịch của dòng Feliz, nâng cấp lên 2 pin LFP tháo rời hoàn toàn, hỗ trợ đổi pin tại trạm V-Green. Quãng đường lên tới 156km/sạc với 2 pin, động cơ BLDC Inhub 3.000W, chuẩn chống nước IP67.",
       "images": {
-        "main": "assets/vehicles/vinfast-theon-s-main.jpg",
+        "main": "assets/vehicles/vinfast-feliz-ii-main.jpg",
         "gallery": [],
         "colors": [
-          { "name": "Trắng ngọc",  "hex": "#F0EEE8", "image": "" },
-          { "name": "Đen",         "hex": "#1C1C1C",  "image": "" },
-          { "name": "Đỏ",          "hex": "#C0392B",  "image": "" },
-          { "name": "Xanh dương",  "hex": "#1A3A6B",  "image": "" },
-          { "name": "Vàng kem",    "hex": "#D4AC0D",  "image": "" },
-          { "name": "Xám bạc",     "hex": "#8E9298",  "image": "" }
+          {
+            "name": "Trắng Ngọc Trai",
+            "hex": "#F5F0E8",
+            "image": ""
+          },
+          {
+            "name": "Đen bóng",
+            "hex": "#1A1A1A",
+            "image": ""
+          },
+          {
+            "name": "Xanh Oliu",
+            "hex": "#6B7C4A",
+            "image": ""
+          },
+          {
+            "name": "Xanh Rêu",
+            "hex": "#4A5C3F",
+            "image": ""
+          },
+          {
+            "name": "Vàng Cát",
+            "hex": "#D4B483",
+            "image": ""
+          }
         ]
       },
       "pricing": {
-        "base": 55900000,
+        "base": 24900000,
         "currency": "VND",
-        "note": "Giá tham khảo, chưa bao gồm phí đăng ký",
+        "note": "Giá đã gồm VAT. Thuê pin: 24,9 triệu | Mua kèm 1 pin: 30,5 triệu. Thuê pin: 175.000đ/pin/tháng. Đổi pin tại trạm: 9.000đ/pin/lần.",
         "variants": [
-          { "name": "Tiêu chuẩn", "price": 55900000 }
+          {
+            "name": "Feliz II — Thuê pin (không kèm pin)",
+            "price": 24900000
+          },
+          {
+            "name": "Feliz II — Mua kèm 1 pin LFP",
+            "price": 30500000
+          }
         ]
       },
-      "rating": { "score": 4.8, "count": 650 },
+      "rating": {
+        "score": 4.6,
+        "count": 890
+      },
       "specs": {
         "performance": {
           "label": "Vận hành",
           "fields": {
-            "topSpeed":       { "label": "Tốc độ tối đa",         "value": 79,    "unit": "km/h"   },
-            "range":          { "label": "Quãng đường/sạc",        "value": 134,   "unit": "km"     },
-            "motorPower":     { "label": "Công suất động cơ",      "value": 3800,  "unit": "W"      },
-            "peakPower":      { "label": "Công suất đỉnh",         "value": 5000,  "unit": "W"      },
-            "torque":         { "label": "Mô-men xoắn cực đại",   "value": 90,    "unit": "N·m"    },
-            "motorType":      { "label": "Loại động cơ",           "value": "BLDC 3-phase Hub Motor", "unit": "" },
-            "driveMode":      { "label": "Chế độ lái",             "value": "Eco / Standard / Sport", "unit": "" }
+            "topSpeed": {
+              "label": "Tốc độ tối đa",
+              "value": 70,
+              "unit": "km/h"
+            },
+            "range": {
+              "label": "Quãng đường (2 pin)",
+              "value": 156,
+              "unit": "km"
+            },
+            "rangeSingle": {
+              "label": "Quãng đường (1 pin)",
+              "value": 82,
+              "unit": "km"
+            },
+            "motorPower": {
+              "label": "Công suất động cơ",
+              "value": 3000,
+              "unit": "W"
+            },
+            "peakPower": {
+              "label": "Công suất đỉnh",
+              "value": null,
+              "unit": "W"
+            },
+            "torque": {
+              "label": "Mô-men xoắn",
+              "value": null,
+              "unit": "N·m"
+            },
+            "motorType": {
+              "label": "Loại động cơ",
+              "value": "BLDC Inhub",
+              "unit": ""
+            },
+            "driveMode": {
+              "label": "Chế độ lái",
+              "value": "Eco / Sport",
+              "unit": ""
+            },
+            "accel": {
+              "label": "Tăng tốc 0–50 km/h",
+              "value": "~16 giây",
+              "unit": ""
+            }
           }
         },
         "battery": {
           "label": "Pin & Sạc",
           "fields": {
-            "batteryType":    { "label": "Loại pin",               "value": "Lithium-ion NMC",    "unit": ""    },
-            "voltage":        { "label": "Điện áp",                "value": 72,                   "unit": "V"   },
-            "capacity":       { "label": "Dung lượng",             "value": 30,                   "unit": "Ah"  },
-            "totalWh":        { "label": "Tổng năng lượng",        "value": 2160,                 "unit": "Wh"  },
-            "chargeTimeFull": { "label": "Thời gian sạc đầy",      "value": "6.5",                "unit": "giờ" },
-            "chargeTimeFast": { "label": "Sạc nhanh (20→80%)",     "value": "3.5",                "unit": "giờ" },
-            "cycleLife":      { "label": "Tuổi thọ pin",           "value": null,                 "unit": ""    },
-            "removable":      { "label": "Pin tháo rời",           "value": false,                "unit": ""    }
+            "batteryType": {
+              "label": "Loại pin",
+              "value": "LFP (Lithium Iron Phosphate)",
+              "unit": ""
+            },
+            "voltage": {
+              "label": "Điện áp",
+              "value": null,
+              "unit": "V"
+            },
+            "capacity": {
+              "label": "Dung lượng / pin",
+              "value": 1.5,
+              "unit": "kWh"
+            },
+            "totalWh": {
+              "label": "Tổng năng lượng (2 pin)",
+              "value": 3.0,
+              "unit": "kWh"
+            },
+            "chargeTimeFull": {
+              "label": "Thời gian sạc đầy",
+              "value": "6.5",
+              "unit": "giờ"
+            },
+            "chargePower": {
+              "label": "Công suất sạc",
+              "value": 400,
+              "unit": "W"
+            },
+            "cycleLife": {
+              "label": "Tuổi thọ pin",
+              "value": null,
+              "unit": ""
+            },
+            "removable": {
+              "label": "Pin tháo rời",
+              "value": true,
+              "unit": ""
+            },
+            "swappable": {
+              "label": "Đổi pin tại trạm",
+              "value": true,
+              "unit": ""
+            },
+            "numBattery": {
+              "label": "Số lượng pin",
+              "value": "2 pin (1 cố định + 1 trong cốp)",
+              "unit": ""
+            }
           }
         },
         "dimensions": {
-          "label": "Kích thước & Trọng lượng",
+          "label": "Kích thước",
           "fields": {
-            "length":         { "label": "Chiều dài",              "value": 1885,  "unit": "mm" },
-            "width":          { "label": "Chiều rộng",             "value": 750,   "unit": "mm" },
-            "height":         { "label": "Chiều cao",              "value": 1140,  "unit": "mm" },
-            "wheelbase":      { "label": "Chiều dài cơ sở",        "value": 1330,  "unit": "mm" },
-            "seatHeight":     { "label": "Chiều cao yên",          "value": 795,   "unit": "mm" },
-            "groundClear":    { "label": "Khoảng sáng gầm",        "value": 155,   "unit": "mm" },
-            "weight":         { "label": "Trọng lượng xe",         "value": 125,   "unit": "kg" },
-            "maxLoad":        { "label": "Tải trọng tối đa",       "value": 150,   "unit": "kg" }
+            "length": {
+              "label": "Chiều dài",
+              "value": 1920,
+              "unit": "mm"
+            },
+            "width": {
+              "label": "Chiều rộng",
+              "value": 694,
+              "unit": "mm"
+            },
+            "height": {
+              "label": "Chiều cao",
+              "value": 1140,
+              "unit": "mm"
+            },
+            "wheelbase": {
+              "label": "Chiều dài cơ sở",
+              "value": null,
+              "unit": "mm"
+            },
+            "seatHeight": {
+              "label": "Chiều cao yên",
+              "value": 780,
+              "unit": "mm"
+            },
+            "groundClear": {
+              "label": "Khoảng sáng gầm",
+              "value": 141,
+              "unit": "mm"
+            },
+            "weight": {
+              "label": "Trọng lượng",
+              "value": null,
+              "unit": "kg"
+            },
+            "maxLoad": {
+              "label": "Tải trọng tối đa",
+              "value": 130,
+              "unit": "kg"
+            }
           }
         },
         "chassis": {
           "label": "Khung & Phanh",
           "fields": {
-            "frontTire":      { "label": "Lốp trước",              "value": "110/70-13",       "unit": "" },
-            "rearTire":       { "label": "Lốp sau",                "value": "130/70-13",       "unit": "" },
-            "frontBrake":     { "label": "Phanh trước",            "value": "Đĩa 240mm + CBS", "unit": "" },
-            "rearBrake":      { "label": "Phanh sau",              "value": "Đĩa 220mm + CBS", "unit": "" },
-            "abs":            { "label": "Phanh ABS",              "value": false,              "unit": "" },
-            "frontSusp":      { "label": "Giảm xóc trước",         "value": "Phuộc lồng đôi",  "unit": "" },
-            "rearSusp":       { "label": "Giảm xóc sau",           "value": "Giảm xóc đôi",    "unit": "" }
+            "frontTire": {
+              "label": "Lốp trước",
+              "value": "90/90-14",
+              "unit": ""
+            },
+            "rearTire": {
+              "label": "Lốp sau",
+              "value": "120/70-14",
+              "unit": ""
+            },
+            "frontBrake": {
+              "label": "Phanh trước",
+              "value": "Đĩa",
+              "unit": ""
+            },
+            "rearBrake": {
+              "label": "Phanh sau",
+              "value": "Tang trống",
+              "unit": ""
+            },
+            "abs": {
+              "label": "ABS",
+              "value": false,
+              "unit": ""
+            },
+            "regenBrake": {
+              "label": "Phanh tái sinh",
+              "value": true,
+              "unit": ""
+            },
+            "frontSusp": {
+              "label": "Giảm xóc trước",
+              "value": "Ống lồng giảm chấn thủy lực",
+              "unit": ""
+            },
+            "rearSusp": {
+              "label": "Giảm xóc sau",
+              "value": "Giảm xóc đôi",
+              "unit": ""
+            }
           }
         },
         "features": {
-          "label": "Trang bị & Tiện nghi",
+          "label": "Trang bị",
           "fields": {
-            "lighting":       { "label": "Đèn chiếu sáng",         "value": "LED Full + DRL tự động", "unit": ""    },
-            "drl":            { "label": "Đèn DRL ban ngày",        "value": true,                     "unit": ""    },
-            "display":        { "label": "Màn hình",                "value": "TFT 7\" cảm ứng",        "unit": ""    },
-            "bluetooth":      { "label": "Bluetooth",               "value": "5.0",                    "unit": ""    },
-            "wifi":           { "label": "WiFi",                    "value": true,                     "unit": ""    },
-            "esim":           { "label": "eSIM / 4G",               "value": true,                     "unit": ""    },
-            "gps":            { "label": "GPS tích hợp",            "value": true,                     "unit": ""    },
-            "app":            { "label": "Kết nối App",             "value": "App VinFast",            "unit": ""    },
-            "smartLock":      { "label": "Khóa thông minh",         "value": "NFC + Từ xa",            "unit": ""    },
-            "fingerprint":    { "label": "Mở khoá vân tay",         "value": false,                    "unit": ""    },
-            "usbCharge":      { "label": "Cổng sạc USB",            "value": "USB-C 18W",              "unit": ""    },
-            "trunkVolume":    { "label": "Cốp xe",                  "value": 30,                       "unit": "lít" },
-            "waterproof":     { "label": "Chống nước",              "value": "IP67",                   "unit": ""    }
+            "lighting": {
+              "label": "Đèn chiếu sáng",
+              "value": "LED Projector 3 thấu kính",
+              "unit": ""
+            },
+            "drl": {
+              "label": "Đèn xi nhan",
+              "value": "LED đồng bộ",
+              "unit": ""
+            },
+            "display": {
+              "label": "Đồng hồ",
+              "value": "Kỹ thuật số toàn phần",
+              "unit": ""
+            },
+            "bluetooth": {
+              "label": "Bluetooth",
+              "value": false,
+              "unit": ""
+            },
+            "wifi": {
+              "label": "WiFi",
+              "value": false,
+              "unit": ""
+            },
+            "esim": {
+              "label": "eSIM / 4G",
+              "value": false,
+              "unit": ""
+            },
+            "gps": {
+              "label": "GPS",
+              "value": false,
+              "unit": ""
+            },
+            "app": {
+              "label": "Kết nối App",
+              "value": false,
+              "unit": ""
+            },
+            "smartLock": {
+              "label": "Khóa thông minh",
+              "value": "Chìa khóa cơ 3-trong-1",
+              "unit": ""
+            },
+            "fingerprint": {
+              "label": "Vân tay",
+              "value": false,
+              "unit": ""
+            },
+            "usbCharge": {
+              "label": "Cổng USB",
+              "value": null,
+              "unit": ""
+            },
+            "trunkVolume": {
+              "label": "Cốp xe",
+              "value": "34L (15L khi lắp pin phụ)",
+              "unit": ""
+            },
+            "waterproof": {
+              "label": "Chống nước động cơ",
+              "value": "IP67 (ngập 0,5m / 30 phút)",
+              "unit": ""
+            },
+            "battDisplay": {
+              "label": "Hiển thị nhiệt độ pin",
+              "value": true,
+              "unit": ""
+            }
           }
         },
         "warranty": {
           "label": "Bảo hành",
           "fields": {
-            "vehicle":        { "label": "Bảo hành xe",             "value": "3 năm / 60.000 km",    "unit": "" },
-            "battery":        { "label": "Bảo hành pin",            "value": "5 năm / 100.000 km",   "unit": "" },
-            "motor":          { "label": "Bảo hành động cơ",        "value": null,                   "unit": "" }
+            "vehicle": {
+              "label": "Bảo hành xe",
+              "value": "6 năm",
+              "unit": ""
+            },
+            "battery": {
+              "label": "Bảo hành pin",
+              "value": "8 năm",
+              "unit": ""
+            },
+            "charging": {
+              "label": "Miễn phí sạc",
+              "value": "Đến 31/5/2027 tại V-Green",
+              "unit": ""
+            },
+            "swapFree": {
+              "label": "Miễn phí đổi pin",
+              "value": "Đến 30/6/2028 (tài xế DV)",
+              "unit": ""
+            }
           }
         }
       },
       "highlights": [
-        "Thiết kế bởi chuyên gia Ý — thẩm mỹ châu Âu, tinh tế từng chi tiết",
-        "eSIM 4G tích hợp — kết nối liên tục không cần điện thoại đi kèm",
-        "Màn hình cảm ứng 7 inch — bản đồ, âm nhạc, thông báo điện thoại",
-        "Động cơ 3.800W / đỉnh 5.000W — mạnh nhất phân khúc xe điện đô thị",
-        "Quãng đường 134km WMTC — xa nhất dòng VinFast xe máy điện",
-        "Bảo hành pin 5 năm / 100.000km — cam kết dài hạn từ nhà sản xuất"
+        "2 pin LFP tháo rời hoàn toàn — đổi pin tại trạm V-Green chỉ 9.000đ/lần",
+        "Quãng đường 156km/sạc với 2 pin — đủ chạy cả tuần không cần sạc",
+        "Pin LFP — an toàn chống cháy nổ, tuổi thọ cao hơn Lithium-ion thông thường",
+        "Phanh tái sinh — thu hồi năng lượng khi giảm ga, tăng quãng đường di chuyển",
+        "Bảo hành xe 6 năm + pin 8 năm — cam kết hậu mãi tốt nhất thị trường Việt Nam",
+        "Chống nước IP67 (0,5m / 30 phút) — yên tâm đi trong mưa lớn, đường ngập",
+        "Thuê pin 175.000đ/tháng — giảm chi phí sở hữu ban đầu xuống chỉ 24,9 triệu",
+        "Cốp 34L rộng nhất phân khúc — chứa nón bảo hiểm cả gia đình"
       ],
-      "pros": ["Thiết kế đẹp chuẩn Ý", "eSIM + GPS đầy đủ", "Quãng đường xa nhất", "Bảo hành tốt nhất"],
-      "cons": ["Giá cao nhất phân khúc", "Nặng 125kg"]
+      "pros": [
+        "Giá thuê pin 24,9 triệu — rẻ nhất phân khúc tay ga điện",
+        "Đổi pin tại trạm — không cần chờ sạc",
+        "Bảo hành pin 8 năm — tốt nhất thị trường",
+        "Pin LFP an toàn, không cháy nổ",
+        "Cốp 34L siêu rộng"
+      ],
+      "cons": [
+        "Không có smartkey, GPS, App",
+        "Phanh sau tang trống (không phải đĩa)",
+        "Tăng tốc chậm hơn các đối thủ (0–50 trong 16 giây)",
+        "Cốp còn 15L khi lắp pin phụ"
+      ]
     }
   ]
 }
