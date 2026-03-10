@@ -3,766 +3,386 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Từ Điển Xe Điện | Yadea & VinFast</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Thông Tin Xe Điện | Yadea & VinFast</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --white: #FFFFFF;
-  --off-white: #F7F6F3;
-  --paper: #FAFAF8;
-  --black: #0D0D0D;
-  --ink: #1A1A1A;
-  --gray-900: #111111;
-  --gray-700: #3D3D3D;
-  --gray-500: #6B6B6B;
-  --gray-300: #C4C4C4;
-  --gray-100: #F0EFEC;
-  --gray-50:  #F7F6F3;
-  --yadea: #0099BB;
-  --yadea-light: #E6F6FA;
-  --yadea-mid: #CCF0F8;
-  --vinfast: #D92B3A;
-  --vinfast-light: #FDECEA;
-  --vinfast-mid: #FBCDD0;
-  --gold: #C9960C;
-  --green: #1A7A3C;
-  --border: #E8E6E1;
-  --border-dark: #D0CEC9;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
-  --shadow-md: 0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.04);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,.10), 0 4px 12px rgba(0,0,0,.06);
-  --shadow-xl: 0 24px 64px rgba(0,0,0,.12);
-  --radius: 12px;
-  --radius-sm: 6px;
-  --radius-lg: 20px;
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Be Vietnam Pro', sans-serif;
+  --white:#FFFFFF; --black:#111111; --ink:#222222;
+  --gray-700:#444444; --gray-500:#666666; --gray-300:#BBBBBB;
+  --gray-100:#F2F2F2; --gray-50:#F8F8F8;
+  --yadea:#FF5F00; --yadea-light:#FFF0E6; --yadea-mid:#FFD4B3;
+  --vinfast:#1464f4; --vinfast-light:#EBF1FF; --vinfast-mid:#C5D7FD;
+  --gold:#444444; --green:#222222;
+  --border:#DDDDDD; --border-dark:#BBBBBB;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 2px 8px rgba(0,0,0,.08);
+  --shadow-lg:0 4px 16px rgba(0,0,0,.10);
+  --radius:6px; --radius-sm:4px;
+  --font-display:'Be Vietnam Pro',sans-serif;
+  --font-body:'Be Vietnam Pro',sans-serif;
+  --sidebar-w:240px;
+  --toc-w:210px;
+  --header-h:48px;
 }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--white);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:2px}
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box }
-html { scroll-behavior:smooth; font-size:16px }
-body {
-  font-family: var(--font-body);
-  background: var(--white);
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+/* ── TOPBAR ───────────────────────────────────── */
+.topbar {
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:var(--header-h);
+  background:var(--white);border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 1.25rem;gap:1rem;
 }
-::-webkit-scrollbar { width: 4px }
-::-webkit-scrollbar-track { background: var(--gray-50) }
-::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 2px }
+.topbar-logo {
+  font-family:var(--font-body);font-size:.92rem;font-weight:700;
+  color:var(--black);cursor:pointer;white-space:nowrap;
+  display:flex;align-items:center;gap:.5rem;text-decoration:none;
+}
+.topbar-logo span{
+  font-size:.72rem;font-weight:400;color:var(--gray-500);
+  padding-left:.75rem;border-left:1px solid var(--border);
+}
+.topbar-search{flex:1;max-width:280px;position:relative;margin-left:.75rem}
+.search-input{
+  width:100%;font-family:var(--font-body);font-size:.8rem;
+  background:var(--gray-50);border:1px solid var(--border);
+  color:var(--ink);border-radius:4px;
+  padding:5px 12px 5px 32px;outline:none;transition:border-color .15s;
+}
+.search-input:focus{border-color:var(--black);background:var(--white)}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--gray-500);font-size:.8rem;pointer-events:none}
+.search-dropdown{
+  position:absolute;top:calc(100% + 4px);left:0;right:0;min-width:300px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:4px;box-shadow:var(--shadow-lg);
+  overflow:hidden;display:none;z-index:999;
+}
+.search-dropdown.open{display:block}
+.sdrop-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 12px;cursor:pointer;border-bottom:1px solid var(--gray-50);
+  transition:background .1s;
+}
+.sdrop-item:hover{background:var(--gray-50)}
+.sdrop-item:last-child{border:none}
+.sdrop-brand{font-size:.6rem;font-weight:700;padding:2px 6px;border-radius:3px;white-space:nowrap;background:var(--gray-100);color:var(--gray-700)}
+.sdrop-name{font-size:.82rem;font-weight:600;color:var(--black)}
+.sdrop-meta{font-size:.68rem;color:var(--gray-500);margin-top:1px}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:.5rem}
+.sidebar-toggle-btn{display:none;background:none;border:none;cursor:pointer;font-size:1rem;color:var(--gray-500);padding:6px}
+@media(max-width:899px){.sidebar-toggle-btn{display:flex;align-items:center}}
 
-/* ── HEADER ─────────────────────────────────── */
-.header {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-  height: 58px;
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid var(--border);
-  display: flex; align-items: center;
-  padding: 0 2.5rem;
-  gap: 2rem;
-}
-.logo {
-  font-family: var(--font-display);
-  font-size: 1.05rem; font-weight: 700;
-  color: var(--black); cursor: pointer;
-  display: flex; align-items: center; gap: .6rem;
-  white-space: nowrap;
-  text-decoration: none;
-}
-.logo-divider {
-  width: 1px; height: 18px;
-  background: var(--gray-300);
-}
-.logo-sub {
-  font-family: var(--font-body);
-  font-size: .65rem; font-weight: 600;
-  color: var(--gray-500);
-  text-transform: uppercase; letter-spacing: .12em;
-}
-.header-nav {
-  display: flex; gap: 0; margin-left: .5rem;
-}
-.nav-btn {
-  font-family: var(--font-body); font-size: .78rem;
-  font-weight: 500; color: var(--gray-500);
-  background: none; border: none; cursor: pointer;
-  padding: 6px 14px; border-radius: 6px;
-  transition: all .2s;
-}
-.nav-btn:hover, .nav-btn.active { color: var(--black); background: var(--gray-100) }
-.header-right {
-  margin-left: auto;
-  display: flex; align-items: center; gap: .75rem;
-}
-.search-wrap { position: relative }
-.search-input {
-  font-family: var(--font-body); font-size: .82rem;
-  background: var(--gray-50); border: 1.5px solid var(--border);
-  color: var(--ink); border-radius: 24px;
-  padding: 7px 16px 7px 38px;
-  width: 220px; outline: none; transition: all .25s;
-}
-.search-input:focus {
-  border-color: var(--yadea); width: 280px;
-  background: var(--white);
-  box-shadow: 0 0 0 3px var(--yadea-light);
-}
-.search-icon {
-  position: absolute; left: 13px; top: 50%;
-  transform: translateY(-50%); color: var(--gray-500);
-  font-size: .9rem; pointer-events: none;
-}
-.search-dropdown {
-  position: absolute; top: calc(100% + 8px); left: 0;
-  min-width: 340px; background: var(--white);
-  border: 1.5px solid var(--border); border-radius: var(--radius);
-  box-shadow: var(--shadow-xl); overflow: hidden; display: none; z-index: 999;
-}
-.search-dropdown.open { display: block }
-.sdrop-item {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 14px; cursor: pointer;
-  border-bottom: 1px solid var(--gray-50);
-  transition: background .15s;
-}
-.sdrop-item:hover { background: var(--gray-50) }
-.sdrop-item:last-child { border: none }
-.sdrop-brand { font-size: .6rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; white-space: nowrap }
-.sdrop-name { font-size: .84rem; font-weight: 600; color: var(--ink) }
-.sdrop-meta { font-size: .7rem; color: var(--gray-500); margin-top: 1px }
-.view-btns { display: flex; gap: 3px }
-.view-btn {
-  width: 32px; height: 32px; border-radius: 6px;
-  background: none; border: 1.5px solid var(--border);
-  color: var(--gray-500); cursor: pointer; font-size: .85rem;
-  display: flex; align-items: center; justify-content: center;
-  transition: all .2s;
-}
-.view-btn.active, .view-btn:hover {
-  background: var(--gray-100); color: var(--black); border-color: var(--gray-300);
-}
+/* ── LAYOUT ───────────────────────────────────── */
+.layout{display:flex;padding-top:var(--header-h);min-height:100vh}
 
-/* ── VIEWS ─────────────────────────────────── */
-#view-catalog, #view-detail { min-height: 100vh; padding-top: 58px }
-#view-detail { display: none }
+/* ── LEFT SIDEBAR ─────────────────────────────── */
+.left-sidebar{
+  width:var(--sidebar-w);flex-shrink:0;
+  position:fixed;top:var(--header-h);left:0;bottom:0;
+  background:var(--gray-50);border-right:1px solid var(--border);
+  overflow-y:auto;z-index:100;transition:transform .25s ease;
+}
+.left-sidebar::-webkit-scrollbar{width:3px}
+.sb-section{margin-bottom:0}
+.sb-section-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.5rem 1rem .4rem;cursor:pointer;
+  font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--gray-500);transition:color .1s;user-select:none;
+  border-bottom:1px solid var(--border);
+}
+.sb-section-header:hover{color:var(--black)}
+.sb-section-arrow{font-size:.55rem;transition:transform .2s;color:var(--gray-300)}
+.sb-section.collapsed .sb-section-arrow{transform:rotate(-90deg)}
+.sb-section.collapsed .sb-items{display:none}
+.sb-brand-label{
+  padding:.5rem 1rem .25rem;font-size:.62rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500);
+  border-bottom:1px solid var(--border);
+}
+.sb-item{
+  display:flex;align-items:center;gap:.55rem;
+  padding:.42rem 1rem .42rem 1.1rem;
+  cursor:pointer;font-size:.8rem;color:var(--gray-700);
+  transition:background .1s;border-left:2px solid transparent;
+}
+.sb-item:hover{background:var(--white);color:var(--black)}
+.sb-item.active{background:var(--white);color:var(--black);font-weight:600;border-left-color:var(--black)}
+.sb-item.yadea.active{border-left-color:var(--yadea);color:var(--yadea)}
+.sb-item.vinfast.active{border-left-color:var(--vinfast);color:var(--vinfast)}
+.sb-thumb{width:32px;height:24px;border-radius:3px;object-fit:contain;flex-shrink:0;background:var(--white);border:1px solid var(--border);padding:1px}
+.sb-thumb-icon{font-size:1rem;flex-shrink:0;width:32px;text-align:center;opacity:.3}
+.sb-item-info{flex:1;min-width:0}
+.sb-item-name{font-size:.8rem;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-item-price{font-size:.63rem;color:var(--gray-500);margin-top:1px;font-weight:400}
+.sb-home{
+  display:flex;align-items:center;gap:.55rem;
+  padding:.5rem 1rem;cursor:pointer;
+  font-size:.82rem;font-weight:600;color:var(--gray-700);
+  border-left:2px solid transparent;transition:all .1s;
+  border-bottom:1px solid var(--border);
+}
+.sb-home:hover{background:var(--white);color:var(--black)}
+.sb-home.active{color:var(--black);background:var(--white);border-left-color:var(--black)}
 
-/* ── HERO ───────────────────────────────────── */
-.hero {
-  padding: 5rem 2.5rem 4rem;
-  max-width: 1400px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 4rem; align-items: center;
-  position: relative;
-}
-.hero::after {
-  content: '';
-  position: absolute; top: 3rem; right: -2rem;
-  width: 500px; height: 500px; border-radius: 50%;
-  background: radial-gradient(circle, var(--yadea-light) 0%, transparent 70%);
-  pointer-events: none; z-index: 0;
-}
-.hero-left { position: relative; z-index: 1 }
-.hero-pill {
-  display: inline-flex; align-items: center; gap: 7px;
-  border: 1.5px solid var(--border);
-  padding: 5px 14px 5px 10px;
-  border-radius: 20px; margin-bottom: 1.5rem;
-  font-size: .7rem; font-weight: 600;
-  color: var(--gray-700); text-transform: uppercase; letter-spacing: .1em;
-}
-.pill-dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--green); box-shadow: 0 0 0 2px rgba(26,122,60,.2);
-}
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.8rem, 5vw, 4.5rem);
-  font-weight: 900; line-height: 1.05;
-  color: var(--black); margin-bottom: 1.2rem;
-  letter-spacing: -.02em;
-}
-.h1-accent { font-style: italic; color: var(--yadea) }
-.h1-accent2 { font-style: italic; color: var(--vinfast) }
-.hero-desc {
-  font-size: .95rem; line-height: 1.8;
-  color: var(--gray-500); max-width: 480px; margin-bottom: 2.5rem;
-}
-.hero-stats {
-  display: flex; gap: 2rem;
-}
-.hstat {
-  padding-right: 2rem;
-  border-right: 1px solid var(--border);
-}
-.hstat:last-child { border: none }
-.hstat-num {
-  font-family: var(--font-display);
-  font-size: 2rem; font-weight: 900;
-  line-height: 1; color: var(--black);
-}
-.hstat-label {
-  font-size: .65rem; color: var(--gray-500);
-  text-transform: uppercase; letter-spacing: .1em;
-  margin-top: .3rem;
-}
-.hero-right {
-  position: relative; z-index: 1;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-}
-.hero-card {
-  background: var(--paper); border: 1.5px solid var(--border);
-  border-radius: var(--radius); padding: 1.2rem;
-  transition: all .3s;
-}
-.hero-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--border-dark);
-}
-.hero-card:first-child {
-  grid-column: 1/-1;
-  background: var(--black); color: var(--white);
-  display: flex; align-items: center; gap: 1.5rem;
-}
-.hcard-icon { font-size: 3.5rem; flex-shrink: 0 }
-.hcard-brand {
-  font-size: .6rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .12em;
-  margin-bottom: .3rem;
-}
-.hcard-name {
-  font-family: var(--font-display);
-  font-size: 1.2rem; font-weight: 700; line-height: 1.2;
-  margin-bottom: .4rem;
-}
-.hero-card:first-child .hcard-name { color: var(--white) }
-.hcard-price {
-  font-size: .85rem; font-weight: 700;
-}
-.hero-card:first-child .hcard-price { color: var(--yadea) }
-.hcard-stat {
-  font-size: .7rem; color: var(--gray-500);
-  margin-top: .2rem;
-}
-.hero-card:first-child .hcard-stat { color: rgba(255,255,255,.5) }
-.hcard-tag {
-  font-size: .58rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em;
-  padding: 2px 7px; border-radius: 3px;
-  display: inline-block; margin-bottom: .5rem;
-}
+/* ── MAIN CONTENT ─────────────────────────────── */
+.main-content{margin-left:var(--sidebar-w);flex:1;min-width:0;display:flex}
+.content-area{flex:1;min-width:0;padding:2rem 2.5rem 4rem;max-width:820px}
 
-/* ── DIVIDER ─────────────────────────────────── */
-.section-divider {
-  max-width: 1400px; margin: 0 auto;
-  border: none; border-top: 1px solid var(--border);
+/* ── RIGHT TOC ────────────────────────────────── */
+.right-toc{
+  width:var(--toc-w);flex-shrink:0;
+  position:sticky;top:calc(var(--header-h) + 1.5rem);
+  align-self:flex-start;padding:1.25rem 1rem 1rem .5rem;display:none;
 }
+@media(min-width:1180px){.right-toc{display:block}}
+.toc-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-500);margin-bottom:.6rem}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:1px}
+.toc-item{
+  font-size:.75rem;color:var(--gray-500);
+  padding:4px 0 4px 10px;border-left:2px solid var(--border);
+  cursor:pointer;transition:all .1s;line-height:1.4;
+}
+.toc-item:hover{color:var(--black);border-left-color:var(--gray-300)}
+.toc-item.active{color:var(--black);font-weight:600;border-left-color:var(--black)}
 
-/* ── FILTERS ─────────────────────────────────── */
-.filters-bar {
-  max-width: 1400px; margin: 0 auto;
-  padding: 1.25rem 2.5rem;
-  display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+/* ── HOME PAGE ────────────────────────────────── */
+.home-header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.home-eyebrow{font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-500);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.home-eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--gray-500)}
+.home-title{font-size:1.6rem;font-weight:700;color:var(--black);margin-bottom:.5rem;line-height:1.2}
+.home-desc{font-size:.86rem;color:var(--gray-500);line-height:1.7;max-width:520px}
+.home-stats{display:flex;gap:1.75rem;margin-top:1.25rem;flex-wrap:wrap}
+.hstat{padding-right:1.75rem;border-right:1px solid var(--border)}
+.hstat:last-child{border:none}
+.hstat-num{font-size:1.5rem;font-weight:700;color:var(--black);line-height:1}
+.hstat-label{font-size:.62rem;color:var(--gray-500);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+.home-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:.85rem}
+.home-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  transition:border-color .15s, box-shadow .15s;
 }
-.filter-group-label {
-  font-size: .65rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .1em;
-  color: var(--gray-500); margin-right: .2rem;
-}
-.fchip {
-  font-family: var(--font-body);
-  font-size: .75rem; font-weight: 500;
-  padding: 5px 14px; border-radius: 20px;
-  border: 1.5px solid var(--border);
-  background: var(--white); color: var(--gray-700);
-  cursor: pointer; transition: all .2s; white-space: nowrap;
-}
-.fchip:hover { border-color: var(--gray-300); background: var(--gray-50) }
-.fchip.active { background: var(--black); color: var(--white); border-color: var(--black) }
-.fchip.yadea.active { background: var(--yadea); border-color: var(--yadea); color: var(--white) }
-.fchip.vinfast.active { background: var(--vinfast); border-color: var(--vinfast); color: var(--white) }
-.fsep { width: 1px; height: 18px; background: var(--border); flex-shrink: 0; margin: 0 .2rem }
-.sort-sel {
-  font-family: var(--font-body); font-size: .75rem; font-weight: 500;
-  background: var(--white); border: 1.5px solid var(--border);
-  color: var(--gray-700); padding: 5px 12px; border-radius: 20px;
-  outline: none; cursor: pointer; margin-left: auto;
-  transition: border-color .2s;
-}
-.sort-sel:focus { border-color: var(--gray-300) }
-.results-count {
-  font-size: .75rem; color: var(--gray-500);
-  margin-left: .5rem; white-space: nowrap;
-}
+.home-card:hover{border-color:var(--gray-500);box-shadow:var(--shadow-sm)}
+.home-card.yadea:hover{border-color:var(--yadea)}
+.home-card.vinfast:hover{border-color:var(--vinfast)}
+.hcard-img{height:130px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:var(--gray-50)}
+.hcard-img img{width:100%;height:100%;object-fit:contain;padding:10px;transition:transform .3s}
+.home-card:hover .hcard-img img{transform:scale(1.03)}
+.hcard-img-icon{font-size:3.5rem;opacity:.12}
+.hcard-badges{position:absolute;top:7px;left:7px;display:flex;gap:3px}
+.hcard-body{padding:.85rem 1rem}
+.hcard-brand-tag{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 6px;border-radius:3px;display:inline-block;margin-bottom:.35rem;background:var(--gray-100);color:var(--gray-700)}
+.yadea .hcard-brand-tag{background:var(--yadea-light);color:var(--yadea)}
+.vinfast .hcard-brand-tag{background:var(--vinfast-light);color:var(--vinfast)}
+.hcard-name{font-size:.95rem;font-weight:700;color:var(--black);margin-bottom:.15rem}
+.hcard-tagline{font-size:.72rem;color:var(--gray-500);margin-bottom:.65rem;line-height:1.4}
+.hcard-price{font-size:.92rem;font-weight:700;color:var(--black);margin-bottom:.5rem}
+.yadea .hcard-price{color:var(--yadea)}
+.vinfast .hcard-price{color:var(--vinfast)}
+.hcard-specs{display:flex;gap:.35rem;flex-wrap:wrap}
+.hcard-spec{font-size:.63rem;background:var(--gray-100);border:1px solid var(--border);padding:2px 7px;border-radius:3px;color:var(--gray-700)}
 
-/* ── CATALOG ─────────────────────────────────── */
-.catalog {
-  max-width: 1400px; margin: 0 auto;
-  padding: 1rem 2.5rem 5rem;
-}
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 1.5rem;
-}
-.catalog-grid.list-view { grid-template-columns: 1fr }
+/* ── DETAIL PAGE ──────────────────────────────── */
+.breadcrumb{display:flex;align-items:center;gap:.4rem;font-size:.75rem;color:var(--gray-500);margin-bottom:1.5rem;flex-wrap:wrap}
+.breadcrumb a{color:var(--gray-500);cursor:pointer;transition:color .1s}
+.breadcrumb a:hover{color:var(--black)}
+.breadcrumb-sep{color:var(--gray-300)}
+.breadcrumb-current{color:var(--black);font-weight:600}
+.detail-brand-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem;flex-wrap:wrap}
+.d-series-tag{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:2px 8px;border-radius:3px;background:var(--gray-100);color:var(--gray-700)}
+.yadea .d-series-tag{background:var(--yadea-light);color:var(--yadea)}
+.vinfast .d-series-tag{background:var(--vinfast-light);color:var(--vinfast)}
+.d-badge{font-size:.58rem;font-weight:700;padding:2px 7px;border-radius:3px;text-transform:uppercase;background:var(--gray-100);color:var(--gray-700)}
+.d-title{font-size:clamp(1.5rem,3vw,2rem);font-weight:700;line-height:1.15;color:var(--black);margin-bottom:.4rem}
+.yadea .d-title{color:var(--yadea)}
+.vinfast .d-title{color:var(--vinfast)}
+.d-tagline{font-size:.88rem;color:var(--gray-500);line-height:1.6;margin-bottom:.85rem}
+.d-desc{font-size:.84rem;color:var(--gray-700);line-height:1.75;margin-bottom:1.75rem;padding-bottom:1.75rem;border-bottom:1px solid var(--border)}
 
-/* ── VEHICLE CARD ─────────────────────────────── */
-.vcard {
-  background: var(--white);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden; cursor: pointer;
-  transition: all .3s ease;
-  position: relative;
-}
-.vcard:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-5px);
-  border-color: var(--border-dark);
-}
-.vcard-img {
-  height: 200px; position: relative; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-}
-.brand-yadea .vcard-img { background: linear-gradient(135deg, #EBF8FC 0%, #D0EFF7 100%) }
-.brand-vinfast .vcard-img { background: linear-gradient(135deg, #FDECEA 0%, #FAD5D8 100%) }
-.vcard-img-icon {
-  font-size: 7rem; opacity: .25;
-  transition: transform .5s ease; user-select: none;
-}
-.vcard:hover .vcard-img-icon { transform: scale(1.06) translateY(-4px) }
-.vcard-badges {
-  position: absolute; top: 12px; left: 12px;
-  display: flex; gap: 5px; flex-wrap: wrap;
-}
-.vbadge {
-  font-size: .58rem; font-weight: 700;
-  padding: 3px 8px; border-radius: 3px;
-  text-transform: uppercase; letter-spacing: .06em;
-}
-.vbadge-new { background: var(--green); color: var(--white) }
-.vbadge-hot { background: var(--gold); color: var(--white) }
-.vbadge-flagship { background: var(--vinfast); color: var(--white) }
-.vbadge-bestseller { background: var(--yadea); color: var(--white) }
-.vbadge-default { background: var(--black); color: var(--white) }
+/* Media */
+.d-media{background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1.75rem}
+.d-media-img{height:240px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.d-media-img img{width:100%;height:100%;object-fit:contain;padding:20px;position:absolute;inset:0}
+.d-media-img-icon{font-size:8rem;opacity:.08}
+.d-colors-bar{border-top:1px solid var(--border);padding:.75rem 1rem;display:flex;align-items:center;gap:.85rem;flex-wrap:wrap}
+.d-colors-label{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500);white-space:nowrap}
+.color-swatches{display:flex;gap:.35rem;flex-wrap:wrap}
+.cswatch{width:20px;height:20px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s;box-shadow:0 1px 2px rgba(0,0,0,.15)}
+.cswatch:hover,.cswatch.active{border-color:var(--black);transform:scale(1.15)}
+.d-color-name{font-size:.7rem;color:var(--gray-500)}
 
-.brand-tag {
-  position: absolute; top: 12px; right: 12px;
-  font-size: .6rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .1em;
-  padding: 3px 9px; border-radius: 3px;
-}
-.brand-yadea .brand-tag { background: var(--yadea-mid); color: var(--yadea) }
-.brand-vinfast .brand-tag { background: var(--vinfast-mid); color: var(--vinfast) }
+/* Sections */
+.d-section{margin-bottom:1.75rem}
+.d-section-title{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gray-500);margin-bottom:.85rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.4rem}
 
-.vcard-body { padding: 1.25rem 1.4rem }
-.vcard-series {
-  font-size: .62rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .12em;
-  color: var(--gray-500); margin-bottom: .3rem;
-}
-.vcard-name {
-  font-family: var(--font-display);
-  font-size: 1.25rem; font-weight: 700;
-  color: var(--black); margin-bottom: .2rem; line-height: 1.2;
-}
-.vcard-tagline {
-  font-size: .78rem; color: var(--gray-500);
-  font-style: italic; margin-bottom: 1rem; line-height: 1.5;
-}
-.vcard-price {
-  font-family: var(--font-display);
-  font-size: 1.3rem; font-weight: 700;
-  margin-bottom: 1rem;
-}
-.brand-yadea .vcard-price { color: var(--yadea) }
-.brand-vinfast .vcard-price { color: var(--vinfast) }
+/* Highlights */
+.highlights{display:flex;flex-direction:column;gap:.4rem}
+.h-item{display:flex;align-items:flex-start;gap:.7rem;padding:.65rem .85rem;background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.82rem;line-height:1.55;color:var(--gray-700)}
+.h-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:.45rem;background:var(--gray-500)}
+.yadea .h-dot{background:var(--yadea)}
+.vinfast .h-dot{background:var(--vinfast)}
 
-.vcard-specs {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: .5rem; margin-bottom: 1rem;
-}
-.vspec {
-  background: var(--gray-50);
-  border-radius: var(--radius-sm);
-  padding: .55rem .7rem;
-  border: 1px solid var(--border);
-}
-.vspec-label {
-  font-size: .58rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: .07em;
-  color: var(--gray-500);
-}
-.vspec-value {
-  font-size: .84rem; font-weight: 700;
-  color: var(--black); margin-top: .15rem;
-}
+/* Pros Cons */
+.pros-cons{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}
+@media(max-width:600px){.pros-cons{grid-template-columns:1fr}}
+.pc-box{background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.85rem .95rem}
+.pc-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;color:var(--gray-700)}
+.pc-list{list-style:none;display:flex;flex-direction:column;gap:.3rem}
+.pc-list li{font-size:.8rem;color:var(--gray-700);padding-left:.9rem;position:relative;line-height:1.4}
+.pc-list.pros li::before{content:'✓';position:absolute;left:0;color:var(--black);font-weight:700}
+.pc-list.cons li::before{content:'×';position:absolute;left:0;color:var(--gray-500)}
 
-.vcard-chips { display: flex; gap: .35rem; flex-wrap: wrap; margin-bottom: 1rem }
-.vchip {
-  font-size: .64rem; font-weight: 500;
-  color: var(--gray-700); background: var(--gray-100);
-  padding: 3px 9px; border-radius: 4px;
-  display: flex; align-items: center; gap: 4px;
-}
+/* Spec tabs */
+.spec-tabs{display:flex;gap:3px;margin-bottom:.85rem;flex-wrap:wrap}
+.spec-tab{font-family:var(--font-body);font-size:.72rem;font-weight:500;padding:4px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--white);color:var(--gray-500);cursor:pointer;transition:all .15s}
+.spec-tab:hover{color:var(--black);background:var(--gray-50)}
+.spec-tab.active{background:var(--black);color:var(--white);border-color:var(--black)}
+.specs-panel{display:none}
+.specs-panel.active{display:block}
+.specs-table{width:100%;border-collapse:collapse}
+.specs-table tr{border-bottom:1px solid var(--gray-100)}
+.specs-table tr:last-child{border:none}
+.specs-table tr:hover td{background:var(--gray-50)}
+.specs-table td{padding:.5rem .65rem;font-size:.8rem}
+.specs-table td:first-child{color:var(--gray-500);width:55%}
+.specs-table td:last-child{font-weight:600;color:var(--black);text-align:right}
+.spec-null{color:var(--gray-300)!important;font-style:italic;font-weight:400!important}
+.spec-true{color:var(--black);font-weight:700!important}
+.spec-false{color:var(--gray-400)}
 
-.vcard-footer {
-  border-top: 1px solid var(--border);
-  padding: .85rem 1.4rem;
-  display: flex; align-items: center; justify-content: space-between;
-}
-.vrating { display: flex; align-items: center; gap: 6px }
-.rating-stars { color: var(--gold); font-size: .75rem; letter-spacing: 1px }
-.rating-text { font-size: .7rem; color: var(--gray-500) }
-.btn-view {
-  font-family: var(--font-body); font-size: .75rem; font-weight: 600;
-  padding: 6px 16px; border-radius: 6px; border: none; cursor: pointer;
-  transition: all .2s;
-}
-.brand-yadea .btn-view { background: var(--yadea-light); color: var(--yadea) }
-.brand-yadea .btn-view:hover { background: var(--yadea); color: var(--white) }
-.brand-vinfast .btn-view { background: var(--vinfast-light); color: var(--vinfast) }
-.brand-vinfast .btn-view:hover { background: var(--vinfast); color: var(--white) }
+/* Price card */
+.d-price-card{background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem 1.2rem;margin-bottom:1rem}
+.d-price{font-size:1.5rem;font-weight:700;color:var(--black);line-height:1;margin-bottom:.2rem}
+.yadea .d-price{color:var(--yadea)}
+.vinfast .d-price{color:var(--vinfast)}
+.d-price-note{font-size:.68rem;color:var(--gray-500);margin-bottom:.85rem}
+.d-price-variants{display:flex;flex-direction:column;gap:.35rem;margin-bottom:.85rem}
+.d-variant{display:flex;justify-content:space-between;align-items:center;padding:.45rem .65rem;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.76rem}
+.d-variant-name{color:var(--gray-700)}
+.d-variant-price{font-weight:700;color:var(--black)}
+.d-quick-specs{display:flex;flex-direction:column;gap:.3rem}
+.dqs-row{display:flex;align-items:center;justify-content:space-between;padding:.4rem .65rem;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.dqs-label{font-size:.68rem;color:var(--gray-500)}
+.dqs-val{font-size:.78rem;font-weight:700;color:var(--black)}
+.d-warranty-card{background:var(--gray-50);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem 1.1rem;margin-top:.75rem}
+.d-warranty-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gray-500);margin-bottom:.5rem}
+.d-warranty-row{display:flex;justify-content:space-between;padding:.32rem 0;border-bottom:1px solid var(--border);font-size:.76rem}
+.d-warranty-row:last-child{border:none}
+.d-warranty-row span:first-child{color:var(--gray-500)}
+.d-warranty-row span:last-child{font-weight:600;color:var(--black)}
 
-/* LIST VIEW */
-.catalog-grid.list-view .vcard { display: flex; flex-direction: row }
-.catalog-grid.list-view .vcard-img { width: 220px; height: auto; flex-shrink: 0 }
-.catalog-grid.list-view .vcard-body { flex: 1 }
-@media(max-width:640px) { .catalog-grid.list-view .vcard { flex-direction: column } }
+/* nav prev/next */
+.d-nav{display:flex;justify-content:space-between;gap:.75rem;margin-top:2.5rem;padding-top:1.25rem;border-top:1px solid var(--border)}
+.d-nav-btn{font-family:var(--font-body);font-size:.76rem;font-weight:500;padding:7px 14px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--white);color:var(--gray-700);cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:.4rem;max-width:48%}
+.d-nav-btn:hover{border-color:var(--black);color:var(--black)}
+.d-nav-btn.next{margin-left:auto}
 
-/* EMPTY */
-.empty-state {
-  grid-column: 1/-1; text-align: center;
-  padding: 5rem 2rem; color: var(--gray-500);
-}
-.empty-icon { font-size: 3rem; opacity: .4; margin-bottom: 1rem }
-
-/* ── DETAIL VIEW ──────────────────────────────── */
-.detail-wrap { max-width: 1200px; margin: 0 auto; padding: 2.5rem 2.5rem 1rem }
-.detail-back {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-body); font-size: .8rem; font-weight: 500;
-  color: var(--gray-500); background: none;
-  border: 1.5px solid var(--border); border-radius: 6px;
-  padding: 6px 14px; cursor: pointer; transition: all .2s; margin-bottom: 2rem;
-}
-.detail-back:hover { color: var(--black); background: var(--gray-50) }
-
-.detail-layout { display: grid; grid-template-columns: 1fr 360px; gap: 3rem; align-items: start }
-@media(max-width:900px) { .detail-layout { grid-template-columns: 1fr } }
-
-/* LEFT */
-.detail-brand-line { display: flex; align-items: center; gap: 10px; margin-bottom: .5rem }
-.detail-series-tag {
-  font-size: .62rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .12em;
-  padding: 3px 10px; border-radius: 3px;
-}
-.detail-badges-row { display: flex; gap: 6px }
-.detail-name {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 900; line-height: 1.1; letter-spacing: -.02em;
-  color: var(--black); margin-bottom: .6rem;
-}
-.detail-tagline {
-  font-size: 1.05rem; color: var(--gray-500);
-  font-style: italic; line-height: 1.6; margin-bottom: 1rem;
-}
-.detail-desc {
-  font-size: .9rem; color: var(--gray-700);
-  line-height: 1.8; margin-bottom: 2rem;
-  padding-bottom: 2rem; border-bottom: 1px solid var(--border);
-}
-
-/* MEDIA BOX */
-.detail-media {
-  background: var(--gray-50);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius); overflow: hidden; margin-bottom: 2rem;
-}
-.detail-media-main {
-  height: 300px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 10rem; opacity: .2;
-}
-.brand-yadea .detail-media-main { background: linear-gradient(135deg, #EBF8FC, #CCF0F8) }
-.brand-vinfast .detail-media-main { background: linear-gradient(135deg, #FDECEA, #FAD5D8) }
-.detail-colors-bar {
-  border-top: 1px solid var(--border); padding: 1rem 1.25rem;
-  display: flex; align-items: center; gap: 1rem;
-}
-.colors-label {
-  font-size: .65rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .1em;
-  color: var(--gray-500); white-space: nowrap;
-}
-.color-swatches { display: flex; gap: .4rem; flex-wrap: wrap }
-.cswatch {
-  width: 24px; height: 24px; border-radius: 50%;
-  cursor: pointer; border: 2px solid transparent;
-  transition: all .2s; box-shadow: 0 1px 3px rgba(0,0,0,.15);
-}
-.cswatch:hover, .cswatch.active { border-color: var(--black); transform: scale(1.15) }
-.color-name-label { font-size: .72rem; color: var(--gray-500); min-width: 80px }
-
-/* HIGHLIGHTS */
-.section-heading {
-  font-size: .7rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .12em;
-  color: var(--gray-500); margin-bottom: .9rem;
-  display: flex; align-items: center; gap: .75rem;
-}
-.section-heading::after {
-  content: ''; flex: 1; height: 1px; background: var(--border);
-}
-.highlights-grid { display: flex; flex-direction: column; gap: .6rem; margin-bottom: 2rem }
-.highlight-item {
-  display: flex; align-items: flex-start; gap: .85rem;
-  padding: .8rem 1rem;
-  background: var(--gray-50); border: 1px solid var(--border);
-  border-radius: var(--radius-sm); font-size: .84rem; line-height: 1.5;
-  color: var(--gray-700);
-}
-.hi-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: .45rem }
-.brand-yadea .hi-dot { background: var(--yadea) }
-.brand-vinfast .hi-dot { background: var(--vinfast) }
-
-/* PROS CONS */
-.pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem }
-.pc-box {
-  background: var(--gray-50); border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm); padding: 1rem 1.1rem;
-}
-.pc-title { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: .6rem }
-.pros .pc-title { color: var(--green) }
-.cons .pc-title { color: var(--vinfast) }
-.pc-list { list-style: none; display: flex; flex-direction: column; gap: .4rem }
-.pc-list li { font-size: .8rem; color: var(--gray-700); padding-left: 1rem; position: relative; line-height: 1.4 }
-.pc-list.pros li::before { content:'✓'; position:absolute; left:0; color:var(--green); font-weight:700 }
-.pc-list.cons li::before { content:'×'; position:absolute; left:0; color:var(--vinfast); font-weight:700 }
-
-/* SPEC TABS */
-.spec-tabs { display: flex; gap: 4px; margin-bottom: 1rem; flex-wrap: wrap }
-.spec-tab {
-  font-family: var(--font-body); font-size: .74rem; font-weight: 600;
-  padding: 6px 14px; border-radius: var(--radius-sm);
-  border: 1.5px solid var(--border); background: var(--white);
-  color: var(--gray-500); cursor: pointer; transition: all .2s;
-}
-.spec-tab:hover { color: var(--black); background: var(--gray-50) }
-.spec-tab.active { background: var(--black); color: var(--white); border-color: var(--black) }
-.specs-panel { display: none }
-.specs-panel.active { display: block }
-.specs-table { width: 100%; border-collapse: collapse }
-.specs-table tr { border-bottom: 1px solid var(--border) }
-.specs-table tr:last-child { border: none }
-.specs-table tr:hover td { background: var(--gray-50) }
-.specs-table td { padding: .6rem .75rem; font-size: .83rem }
-.specs-table td:first-child { color: var(--gray-500); width: 50% }
-.specs-table td:last-child { font-weight: 600; color: var(--ink); text-align: right }
-.spec-null { color: var(--gray-300) !important; font-style: italic; font-weight: 400 !important }
-.spec-true { color: var(--green); font-weight: 700 !important }
-.spec-false { color: var(--gray-400) }
-
-/* RIGHT — STICKY */
-.sticky-card {
-  background: var(--white); border: 1.5px solid var(--border);
-  border-radius: var(--radius); padding: 1.75rem;
-  position: sticky; top: 74px;
-  box-shadow: var(--shadow-md);
-}
-.sticky-price {
-  font-family: var(--font-display); font-size: 2.2rem; font-weight: 900;
-  line-height: 1; margin-bottom: .3rem; color: var(--black);
-}
-.brand-yadea .sticky-price { color: var(--yadea) }
-.brand-vinfast .sticky-price { color: var(--vinfast) }
-.sticky-note { font-size: .72rem; color: var(--gray-500); margin-bottom: 1.5rem }
-.sticky-divider { height: 1px; background: var(--border); margin: 1.25rem 0 }
-.sticky-specs { display: flex; flex-direction: column; gap: .5rem; margin-bottom: .5rem }
-.ss-row {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: .55rem .75rem;
-  background: var(--gray-50); border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-}
-.ss-label { font-size: .72rem; color: var(--gray-500); display: flex; align-items: center; gap: 7px }
-.ss-val { font-size: .85rem; font-weight: 700; color: var(--black) }
-.warranty-block { margin-top: .5rem }
-.warranty-title {
-  font-size: .62rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .1em;
-  color: var(--gray-500); margin-bottom: .6rem;
-}
-.warranty-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: .4rem 0; border-bottom: 1px solid var(--border);
-  font-size: .78rem;
-}
-.warranty-row:last-child { border: none }
-.warranty-row span:first-child { color: var(--gray-500) }
-.warranty-row span:last-child { font-weight: 600; color: var(--ink) }
-
-/* RELATED */
-.related-wrap { max-width: 1200px; margin: 0 auto; padding: 2rem 2.5rem 5rem }
-.related-title {
-  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
-  color: var(--black); margin-bottom: 1.5rem;
-  display: flex; align-items: center; gap: 1rem;
-}
-.related-title::after { content: ''; flex: 1; height: 1px; background: var(--border) }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem }
-
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 2rem 2.5rem;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 1rem;
-  font-size: .75rem; color: var(--gray-500);
-  max-width: 1400px; margin: 0 auto;
-}
-.footer-logo {
-  font-family: var(--font-display); font-weight: 700;
-  font-size: .9rem; color: var(--black);
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity:0; transform:translateY(16px) } to { opacity:1; transform:none } }
-.fade-up { animation: fadeUp .4s ease both }
+/* BADGES */
+.vbadge{font-size:.58rem;font-weight:700;padding:2px 6px;border-radius:3px;text-transform:uppercase;background:var(--gray-200);color:var(--gray-700)}
+.vbadge-new,.vbadge-hot,.vbadge-flagship,.vbadge-bestseller,.vbadge-default{background:var(--gray-100);color:var(--gray-700);border:1px solid var(--border)}
 
 /* RESPONSIVE */
-@media(max-width:900px) {
-  .hero { grid-template-columns: 1fr; gap: 2rem }
-  .hero::after { display: none }
-  .hero-right { display: none }
-  .detail-layout { grid-template-columns: 1fr }
-  .pros-cons { grid-template-columns: 1fr }
+@media(max-width:899px){
+  .left-sidebar{transform:translateX(-100%)}
+  .left-sidebar.open{transform:translateX(0)}
+  .main-content{margin-left:0}
+  .sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.25);z-index:99}
+  .sidebar-overlay.open{display:block}
 }
-@media(max-width:600px) {
-  .header { padding: 0 1.25rem }
-  .hero { padding: 3rem 1.25rem 2.5rem }
-  .filters-bar { padding: 1rem 1.25rem }
-  .catalog { padding: .75rem 1.25rem 4rem }
-  .detail-wrap, .related-wrap { padding: 1.5rem 1.25rem 2rem }
-  .search-input { width: 160px }
-  .search-input:focus { width: 200px }
-  .logo-sub, .header-nav { display: none }
+@media(max-width:600px){
+  .content-area{padding:1.25rem 1rem 3rem}
 }
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.fade-in{animation:fadeIn .25s ease both}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <a class="logo" onclick="showCatalog()">
-    Từ Điển Xe Điện
+<!-- OVERLAY mobile -->
+<div class="sidebar-overlay" id="sbOverlay" onclick="closeSidebar()"></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+  <a class="topbar-logo" onclick="showHome()">
+    Thông Tin Xe Điện
+    <span>Yadea & VinFast</span>
   </a>
-  <div class="logo-divider"></div>
-  <span class="logo-sub">Yadea & VinFast 2024–2025</span>
-  <nav class="header-nav">
-    <button class="nav-btn active" onclick="applyFilter(this,'all')">Tất cả</button>
-    <button class="nav-btn" onclick="applyFilter(this,'brand:yadea')">Yadea</button>
-    <button class="nav-btn" onclick="applyFilter(this,'brand:vinfast')">VinFast</button>
-  </nav>
-  <div class="header-right">
-    <div class="search-wrap">
-      <span class="search-icon">⌕</span>
-      <input class="search-input" id="searchInput" type="text" placeholder="Tìm xe..." autocomplete="off">
-      <div class="search-dropdown" id="searchDrop"></div>
-    </div>
-    <div class="view-btns">
-      <button class="view-btn active" id="btnGrid" onclick="setView('grid')" title="Lưới">⊞</button>
-      <button class="view-btn" id="btnList" onclick="setView('list')" title="Danh sách">☰</button>
-    </div>
+  <div class="topbar-search">
+    <span class="search-icon">⌕</span>
+    <input class="search-input" id="searchInput" type="text" placeholder="Tìm xe..." autocomplete="off">
+    <div class="search-dropdown" id="searchDrop"></div>
   </div>
 </header>
 
-<!-- CATALOG VIEW -->
-<div id="view-catalog">
+<!-- LAYOUT -->
+<div class="layout">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="hero-pill"><span class="pill-dot"></span> Cập nhật 2024 – 2025</div>
-      <h1>Từ điển<br><span class="h1-accent">Yadea</span><br>& <span class="h1-accent2">VinFast</span></h1>
-      <p class="hero-desc">Tra cứu đầy đủ thông số kỹ thuật, giá bán và tính năng của tất cả mẫu xe điện. Dữ liệu chuẩn, luôn được cập nhật.</p>
-      <div class="hero-stats" id="heroStats"></div>
+  <!-- LEFT SIDEBAR -->
+  <aside class="left-sidebar" id="leftSidebar">
+    <div class="sb-home active" id="sb-home" onclick="showHome();closeSidebar()">
+      🏠 <span>Trang chủ</span>
     </div>
-    <div class="hero-right" id="heroCards"></div>
-  </section>
+    <div id="sbContent"></div>
+  </aside>
 
-  <hr class="section-divider">
+  <!-- MAIN -->
+  <div class="main-content">
 
-  <!-- FILTERS -->
-  <div class="filters-bar">
-    <span class="filter-group-label">Lọc</span>
-    <button class="fchip active" data-f="all" onclick="applyFilterChip(this)">Tất cả</button>
-    <button class="fchip yadea" data-f="brand:yadea" onclick="applyFilterChip(this)">⚡ Yadea</button>
-    <button class="fchip vinfast" data-f="brand:vinfast" onclick="applyFilterChip(this)">🔴 VinFast</button>
-    <div class="fsep"></div>
-    <button class="fchip" data-f="price:under20" onclick="applyFilterChip(this)">Dưới 20 triệu</button>
-    <button class="fchip" data-f="price:20to40" onclick="applyFilterChip(this)">20–40 triệu</button>
-    <button class="fchip" data-f="price:above40" onclick="applyFilterChip(this)">Trên 40 triệu</button>
-    <div class="fsep"></div>
-    <button class="fchip" data-f="feat:esim" onclick="applyFilterChip(this)">📶 eSIM 4G</button>
-    <button class="fchip" data-f="feat:gps" onclick="applyFilterChip(this)">🗺 GPS</button>
-    <button class="fchip" data-f="feat:removable" onclick="applyFilterChip(this)">🔋 Pin tháo rời</button>
-    <select class="sort-sel" id="sortSel" onchange="applySort()">
-      <option value="">Sắp xếp</option>
-      <option value="price-asc">Giá tăng dần</option>
-      <option value="price-desc">Giá giảm dần</option>
-      <option value="range-desc">Quãng đường xa nhất</option>
-      <option value="speed-desc">Tốc độ cao nhất</option>
-    </select>
-    <span class="results-count" id="resultsCount"></span>
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+
+      <!-- HOME PAGE -->
+      <div id="page-home" class="fade-in">
+        <div class="home-header">
+          <div class="home-eyebrow"><span class="home-eyebrow-dot"></span> Cập nhật 2024 – 2026</div>
+          <h1 class="home-title">Thông Tin<br>Xe Điện Việt Nam</h1>
+          <p class="home-desc">Tra cứu đầy đủ thông số kỹ thuật, giá bán và tính năng của tất cả mẫu xe điện Yadea và VinFast. Dữ liệu chuẩn, luôn được cập nhật.</p>
+          <div class="home-stats" id="homeStats"></div>
+        </div>
+        <div class="home-grid" id="homeGrid"></div>
+      </div>
+
+      <!-- DETAIL PAGE -->
+      <div id="page-detail" style="display:none">
+        <div class="breadcrumb" id="breadcrumb"></div>
+        <div id="detailContent"></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT TOC -->
+    <div class="right-toc" id="rightToc">
+      <div class="toc-title">📌 Trên trang này</div>
+      <ul class="toc-list" id="tocList"></ul>
+    </div>
+
   </div>
-
-  <!-- GRID -->
-  <div class="catalog">
-    <div class="catalog-grid" id="catalogGrid"></div>
-  </div>
-
 </div>
-
-<!-- DETAIL VIEW -->
-<div id="view-detail">
-  <div class="detail-wrap">
-    <button class="detail-back" onclick="showCatalog()">← Quay lại</button>
-    <div id="detailContent"></div>
-  </div>
-  <div class="related-wrap" id="relatedWrap"></div>
-</div>
-
-<footer>
-  <span class="footer-logo">Từ Điển Xe Điện</span>
-  <span>Yadea & VinFast · Phiên bản 2024–2025 · Dữ liệu mang tính tham khảo</span>
-</footer>
 
 <script>
 const DB_URL = 'data/vehicles.json';
 let DB = null;
-let activeFilter = 'all';
-let activeSort   = '';
-let activeView   = 'grid';
+let currentId = null;
 
 async function loadData() {
   try {
     const r = await fetch(DB_URL);
     DB = await r.json();
-  } catch(e) {
-    DB = DEMO_DATA;
-  }
+  } catch(e) { DB = DEMO_DATA }
   init();
 }
 
 function init() {
-  renderHero();
-  renderCatalog();
+  renderSidebar();
+  renderHome();
   initSearch();
 }
 
@@ -771,172 +391,120 @@ function fmtPrice(n) {
   if (!n) return '—';
   return new Intl.NumberFormat('vi-VN').format(n) + ' ₫';
 }
+function fmtM(n) {
+  if (!n) return '—';
+  return (n/1000000).toFixed(1).replace('.0','') + ' triệu';
+}
 function fmtVal(f) {
-  if (f.value === null || f.value === undefined) return '<span class="spec-null">—</span>';
-  if (typeof f.value === 'boolean')
-    return f.value
-      ? '<span class="spec-true">✓ Có</span>'
-      : '<span class="spec-false">Không</span>';
-  return `${f.value}${f.unit ? ' ' + f.unit : ''}`;
+  if (f.value===null||f.value===undefined) return '<span class="spec-null">—</span>';
+  if (typeof f.value==='boolean')
+    return f.value ? '<span class="spec-true">✓ Có</span>' : '<span class="spec-false">Không</span>';
+  return `${f.value}${f.unit?' '+f.unit:''}`;
 }
 function badgeClass(b) {
   const m = b.toLowerCase();
-  if (m.includes('chạy') || m.includes('best')) return 'vbadge-bestseller';
-  if (m.includes('flagship') || m.includes('cao cấp')) return 'vbadge-flagship';
-  if (m.match(/20\d\d/) || m.includes('mới')) return 'vbadge-new';
-  if (m.includes('hot') || m.includes('phổ biến')) return 'vbadge-hot';
+  if (m.includes('chạy')||m.includes('best')) return 'vbadge-bestseller';
+  if (m.includes('flagship')||m.includes('cao cấp')) return 'vbadge-flagship';
+  if (m.match(/20\d\d/)||m.includes('mới')) return 'vbadge-new';
   return 'vbadge-default';
 }
 
-// ── HERO ────────────────────────────────────────
-function renderHero() {
+// ── SIDEBAR ──────────────────────────────────────
+function renderSidebar() {
+  const brands = {};
+  DB.vehicles.forEach(v => {
+    if (!brands[v.brand]) brands[v.brand] = [];
+    brands[v.brand].push(v);
+  });
+  let html = '';
+  Object.entries(brands).forEach(([brand, vehicles]) => {
+    html += `<div class="sb-section">
+      <div class="sb-section-header" onclick="toggleSection(this)">
+        ${DB.brands[brand]?.name||brand} <span class="sb-section-arrow">▼</span>
+      </div>
+      <div class="sb-items">
+        <div class="sb-brand-label ${brand}">${DB.brands[brand]?.name||brand}</div>
+        ${vehicles.map(v=>`
+          <div class="sb-item ${brand}" id="sb-${v.id}" onclick="showDetail('${v.id}');closeSidebar()">
+            ${v.images?.main
+              ? `<img class="sb-thumb" src="${v.images.main}" alt="${v.name}" onerror="this.style.display='none'">`
+              : `<span class="sb-thumb-icon">🛵</span>`}
+            <div class="sb-item-info">
+              <div class="sb-item-name">${v.fullName}</div>
+              <div class="sb-item-price">từ ${fmtM(v.pricing?.base)}</div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  });
+  document.getElementById('sbContent').innerHTML = html;
+}
+
+function toggleSection(el) {
+  el.closest('.sb-section').classList.toggle('collapsed');
+}
+
+function setActiveSidebar(id) {
+  document.querySelectorAll('.sb-item,.sb-home').forEach(el=>el.classList.remove('active'));
+  const target = document.getElementById('sb-'+(id||'home'));
+  if (target) target.classList.add('active');
+}
+
+// ── HOME ─────────────────────────────────────────
+function renderHome() {
   const total   = DB.vehicles.length;
   const yadea   = DB.vehicles.filter(v=>v.brand==='yadea').length;
   const vinfast = DB.vehicles.filter(v=>v.brand==='vinfast').length;
-  document.getElementById('heroStats').innerHTML = `
+
+  document.getElementById('homeStats').innerHTML = `
     <div class="hstat"><div class="hstat-num" style="color:var(--yadea)">${yadea}</div><div class="hstat-label">Mẫu Yadea</div></div>
     <div class="hstat"><div class="hstat-num" style="color:var(--vinfast)">${vinfast}</div><div class="hstat-label">Mẫu VinFast</div></div>
     <div class="hstat"><div class="hstat-num">${total}</div><div class="hstat-label">Tổng mẫu xe</div></div>
   `;
-  const featured = DB.vehicles.slice(0, 3);
-  const brand = DB.brands;
-  document.getElementById('heroCards').innerHTML = featured.map((v,i) => `
-    <div class="hero-card ${i===0?'':'brand-'+v.brand}" onclick="showDetail('${v.id}')" style="cursor:pointer">
-      ${i===0 ? `
-        ${v.images?.main ? `<img src="${v.images.main}" alt="${v.fullName}" style="width:80px;height:80px;object-fit:contain;flex-shrink:0" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">` : ''}
-        <div class="hcard-icon" style="${v.images?.main ? 'display:none' : ''}">🛵</div>
-        <div>
-          <div class="hcard-brand" style="color:${brand[v.brand].accentColor}">${v.brand.toUpperCase()}</div>
-          <div class="hcard-name">${v.fullName}</div>
-          <div class="hcard-price" style="color:${brand[v.brand].accentColor}">${fmtPrice(v.pricing.base)}</div>
-          <div class="hcard-stat">${v.specs.performance.fields.range?.value||'—'}km · ${v.specs.performance.fields.topSpeed?.value||'—'}km/h</div>
+
+  document.getElementById('homeGrid').innerHTML = DB.vehicles.map(v => {
+    const pf = v.specs.performance.fields;
+    const bt = v.specs.battery.fields;
+    return `
+    <div class="home-card ${v.brand} fade-in" onclick="showDetail('${v.id}')">
+      <div class="hcard-img">
+        ${v.images?.main
+          ? `<img src="${v.images.main}" alt="${v.fullName}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          : ''}
+        <div class="hcard-img-icon" style="${v.images?.main?'display:none':''}">🛵</div>
+        <div class="hcard-badges">${(v.badges||[]).map(b=>`<span class="vbadge ${badgeClass(b)}">${b}</span>`).join('')}</div>
+      </div>
+      <div class="hcard-body">
+        <span class="hcard-brand-tag">${v.brand.toUpperCase()}</span>
+        <div class="hcard-name">${v.fullName}</div>
+        <div class="hcard-tagline">${v.tagline}</div>
+        <div class="hcard-price">${fmtPrice(v.pricing?.base)}</div>
+        <div class="hcard-specs">
+          <span class="hcard-spec">⚡ ${pf.topSpeed?.value||'—'}km/h</span>
+          <span class="hcard-spec">📏 ${pf.range?.value||'—'}km</span>
+          <span class="hcard-spec">🔋 ${bt.voltage?.value||'—'}V</span>
+          ${v.specs.features.fields.esim?.value ? '<span class="hcard-spec">📶 eSIM</span>' : ''}
+          ${v.specs.features.fields.gps?.value  ? '<span class="hcard-spec">🗺 GPS</span>'  : ''}
         </div>
-      ` : `
-        <div class="hcard-tag" style="background:${brand[v.brand].accentColor}18;color:${brand[v.brand].accentColor}">${v.brand.toUpperCase()}</div>
-        <div class="hcard-name" style="font-size:.95rem;font-family:var(--font-display);font-weight:700">${v.fullName}</div>
-        <div class="hcard-price" style="color:${brand[v.brand].accentColor};font-size:.9rem;font-weight:700;margin-top:.3rem">${fmtPrice(v.pricing.base)}</div>
-        <div class="hcard-stat">${v.specs.performance.fields.range?.value||'—'}km</div>
-      `}
-    </div>
-  `).join('');
-}
-
-// ── FILTER & SORT ────────────────────────────────
-function applyFilter(btn, val) {
-  activeFilter = val;
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  document.querySelectorAll('.fchip').forEach(c => {
-    c.classList.toggle('active', c.dataset.f === val);
-  });
-  renderCatalog();
-}
-function applyFilterChip(btn) {
-  activeFilter = btn.dataset.f;
-  document.querySelectorAll('.fchip').forEach(c=>c.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  renderCatalog();
-}
-function applySort() {
-  activeSort = document.getElementById('sortSel').value;
-  renderCatalog();
-}
-function setView(v) {
-  activeView = v;
-  document.getElementById('catalogGrid').className = 'catalog-grid' + (v==='list'?' list-view':'');
-  document.getElementById('btnGrid').classList.toggle('active', v==='grid');
-  document.getElementById('btnList').classList.toggle('active', v==='list');
-}
-
-function getFiltered() {
-  let list = [...DB.vehicles];
-  if (activeFilter !== 'all') {
-    const [type, val] = activeFilter.split(':');
-    if (type==='brand') list = list.filter(v=>v.brand===val);
-    else if (type==='price') {
-      if (val==='under20')  list = list.filter(v=>(v.pricing.base||0)<20000000);
-      if (val==='20to40')   list = list.filter(v=>(v.pricing.base||0)>=20000000&&(v.pricing.base||0)<=40000000);
-      if (val==='above40')  list = list.filter(v=>(v.pricing.base||0)>40000000);
-    } else if (type==='feat') {
-      if (val==='esim')     list = list.filter(v=>v.specs.features.fields.esim?.value===true);
-      if (val==='gps')      list = list.filter(v=>v.specs.features.fields.gps?.value===true);
-      if (val==='removable')list = list.filter(v=>v.specs.battery.fields.removable?.value===true);
-    }
-  }
-  if (activeSort) {
-    list.sort((a,b)=>{
-      if (activeSort==='price-asc')  return (a.pricing.base||0)-(b.pricing.base||0);
-      if (activeSort==='price-desc') return (b.pricing.base||0)-(a.pricing.base||0);
-      if (activeSort==='range-desc') return (b.specs.performance.fields.range?.value||0)-(a.specs.performance.fields.range?.value||0);
-      if (activeSort==='speed-desc') return (b.specs.performance.fields.topSpeed?.value||0)-(a.specs.performance.fields.topSpeed?.value||0);
-      return 0;
-    });
-  }
-  return list;
-}
-
-// ── RENDER CATALOG ───────────────────────────────
-function renderCatalog() {
-  const list = getFiltered();
-  const grid = document.getElementById('catalogGrid');
-  const rc   = document.getElementById('resultsCount');
-  if (rc) rc.textContent = `${list.length} mẫu xe`;
-  if (!list.length) {
-    grid.innerHTML = `<div class="empty-state"><div class="empty-icon">🔍</div><div>Không tìm thấy xe phù hợp</div></div>`;
-    return;
-  }
-  grid.innerHTML = list.map((v,i) => renderCard(v,i)).join('');
-}
-
-function renderCard(v, i) {
-  const pf   = v.specs.performance.fields;
-  const bt   = v.specs.battery.fields;
-  const ft   = v.specs.features.fields;
-  const chips = [];
-  if (ft.waterproof?.value)          chips.push({icon:'🛡',t:ft.waterproof.value});
-  if (ft.esim?.value===true)         chips.push({icon:'📶',t:'eSIM 4G'});
-  if (ft.gps?.value===true)          chips.push({icon:'🗺',t:'GPS'});
-  if (bt.removable?.value===true)    chips.push({icon:'🔋',t:'Pin tháo rời'});
-  if (ft.smartLock?.value)           chips.push({icon:'🔒',t:ft.smartLock.value});
-  const stars = '★'.repeat(Math.round(v.rating?.score||0))+'☆'.repeat(5-Math.round(v.rating?.score||0));
-  return `
-  <div class="vcard brand-${v.brand} fade-up" style="animation-delay:${i*.05}s" onclick="showDetail('${v.id}')">
-    <div class="vcard-img">
-      ${v.images?.main
-        ? `<img src="${v.images.main}" alt="${v.fullName}" style="width:100%;height:100%;object-fit:contain;padding:16px;transition:transform .5s ease" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`
-        : ''}
-      <div class="vcard-img-icon" style="${v.images?.main ? 'display:none' : ''}">🛵</div>
-      <div class="vcard-badges">${(v.badges||[]).map(b=>`<span class="vbadge ${badgeClass(b)}">${b}</span>`).join('')}</div>
-      <span class="brand-tag">${v.brand.toUpperCase()}</span>
-    </div>
-    <div class="vcard-body">
-      <div class="vcard-series">${v.series}</div>
-      <div class="vcard-name">${v.fullName}</div>
-      <div class="vcard-tagline">${v.tagline}</div>
-      <div class="vcard-price">${fmtPrice(v.pricing.base)}</div>
-      <div class="vcard-specs">
-        <div class="vspec"><div class="vspec-label">Tốc độ tối đa</div><div class="vspec-value">${pf.topSpeed?.value||'—'} km/h</div></div>
-        <div class="vspec"><div class="vspec-label">Quãng đường</div><div class="vspec-value">${pf.range?.value||'—'} km</div></div>
-        <div class="vspec"><div class="vspec-label">Pin</div><div class="vspec-value">${bt.voltage?.value||'—'}V/${bt.capacity?.value||'—'}Ah</div></div>
-        <div class="vspec"><div class="vspec-label">Động cơ</div><div class="vspec-value">${pf.motorPower?.value||'—'} W</div></div>
       </div>
-      ${chips.length?`<div class="vcard-chips">${chips.slice(0,4).map(c=>`<span class="vchip">${c.icon} ${c.t}</span>`).join('')}</div>`:''}
-    </div>
-    <div class="vcard-footer">
-      <div class="vrating">
-        <span class="rating-stars">${stars}</span>
-        <span class="rating-text">${v.rating?.score||'—'} (${new Intl.NumberFormat('vi-VN').format(v.rating?.count||0)})</span>
-      </div>
-      <button class="btn-view">Xem chi tiết →</button>
-    </div>
-  </div>`;
+    </div>`;
+  }).join('');
+}
+
+function showHome() {
+  currentId = null;
+  document.getElementById('page-home').style.display = 'block';
+  document.getElementById('page-detail').style.display = 'none';
+  setActiveSidebar(null);
+  renderToc([]);
+  window.scrollTo(0,0);
 }
 
 // ── DETAIL ───────────────────────────────────────
 function showDetail(id) {
   const v = DB.vehicles.find(x=>x.id===id);
   if (!v) return;
+  currentId = id;
   const brand = DB.brands[v.brand];
   const ac    = brand.accentColor;
   const pf    = v.specs.performance.fields;
@@ -945,12 +513,25 @@ function showDetail(id) {
   const war   = v.specs.warranty.fields;
   const ft    = v.specs.features.fields;
 
-  document.getElementById('view-catalog').style.display = 'none';
-  document.getElementById('view-detail').style.display = 'block';
+  document.getElementById('page-home').style.display   = 'none';
+  document.getElementById('page-detail').style.display = 'block';
+  setActiveSidebar(id);
   window.scrollTo(0,0);
 
+  // Breadcrumb
+  document.getElementById('breadcrumb').innerHTML = `
+    <a onclick="showHome()">🏠 Trang chủ</a>
+    <span class="breadcrumb-sep">›</span>
+    <a onclick="showHome()">${brand.name}</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">${v.fullName}</span>
+  `;
+
+  // Spec tabs
   const specSections = Object.entries(v.specs);
-  const tabsHTML   = specSections.map(([k,s],i)=>`<button class="spec-tab ${i===0?'active':''}" id="tab-${k}" onclick="switchTab('${k}')">${s.label}</button>`).join('');
+  const tabsHTML = specSections.map(([k,s],i)=>
+    `<button class="spec-tab ${i===0?'active':''}" id="tab-${k}" onclick="switchTab('${k}')">${s.label}</button>`
+  ).join('');
   const panelsHTML = specSections.map(([k,s],i)=>`
     <div class="specs-panel ${i===0?'active':''}" id="panel-${k}">
       <table class="specs-table">
@@ -958,79 +539,148 @@ function showDetail(id) {
       </table>
     </div>`).join('');
 
+  // Variants
+  const variantsHTML = (v.pricing?.variants||[]).length > 1
+    ? `<div class="d-price-variants">
+        ${v.pricing.variants.map(vr=>`
+          <div class="d-variant">
+            <span class="d-variant-name">${vr.name}</span>
+            <span class="d-variant-price">${fmtPrice(vr.price)}</span>
+          </div>`).join('')}
+       </div>`
+    : '';
+
   document.getElementById('detailContent').innerHTML = `
-  <div class="detail-layout brand-${v.brand}">
-    <div class="detail-left">
-      <div class="detail-brand-line">
-        <span class="detail-series-tag" style="background:${ac}18;color:${ac}">${v.brand.toUpperCase()} · ${v.series}</span>
-        <div class="detail-badges-row">${(v.badges||[]).map(b=>`<span class="vbadge ${badgeClass(b)}">${b}</span>`).join('')}</div>
-      </div>
-      <h1 class="detail-name" style="color:${ac}">${v.fullName}</h1>
-      <p class="detail-tagline">${v.tagline}</p>
-      <p class="detail-desc">${v.description}</p>
+  <div class="${v.brand} fade-in">
+    <div class="detail-brand-row">
+      <span class="d-series-tag" style="background:${ac}18;color:${ac}">${v.brand.toUpperCase()} · ${v.series}</span>
+      ${(v.badges||[]).map(b=>`<span class="vbadge ${badgeClass(b)}">${b}</span>`).join('')}
+    </div>
+    <h1 class="d-title" id="sec-overview" style="color:${ac}">${v.fullName}</h1>
+    <p class="d-tagline">${v.tagline}</p>
+    <p class="d-desc">${v.description}</p>
 
-      <div class="detail-media brand-${v.brand}">
-        <div class="detail-media-main" style="position:relative;overflow:hidden">
-          ${v.images?.main ? `<img src="${v.images.main}" alt="${v.fullName}" style="width:100%;height:100%;object-fit:contain;padding:24px;position:absolute;inset:0" onerror="this.style.display='none'">` : ''}
-          <span style="font-size:10rem;opacity:.15">🛵</span>
+    <!-- Price card inline on mobile -->
+    <div class="d-price-card" style="display:none" id="mobile-price">
+      <div class="d-price">${fmtPrice(v.pricing?.base)}</div>
+      <div class="d-price-note">${v.pricing?.note||'Giá tham khảo'}</div>
+      ${variantsHTML}
+    </div>
+
+    <div class="d-media ${v.brand}">
+      <div class="d-media-img">
+        ${v.images?.main ? `<img src="${v.images.main}" alt="${v.fullName}" onerror="this.style.display='none'">` : ''}
+        <span class="d-media-img-icon">🛵</span>
+      </div>
+      ${(v.images?.colors||[]).length ? `
+      <div class="d-colors-bar">
+        <span class="d-colors-label">Màu sắc</span>
+        <div class="color-swatches">
+          ${v.images.colors.map((c,i)=>`<div class="cswatch ${i===0?'active':''}" style="background:${c.hex}" title="${c.name}" onclick="pickColor(this,'${c.name}')"></div>`).join('')}
         </div>
-        ${v.images?.colors?.length ? `
-        <div class="detail-colors-bar">
-          <span class="colors-label">Màu sắc</span>
-          <div class="color-swatches">
-            ${v.images.colors.map((c,i)=>`<div class="cswatch ${i===0?'active':''}" style="background:${c.hex}" title="${c.name}" onclick="pickColor(this,'${c.name}')"></div>`).join('')}
-          </div>
-          <span class="color-name-label" id="colorLabel">${v.images.colors[0]?.name||''}</span>
-        </div>` : ''}
-      </div>
-
-      <div class="section-heading">✨ Tính năng nổi bật</div>
-      <div class="highlights-grid brand-${v.brand}">
-        ${(v.highlights||[]).map(h=>`<div class="highlight-item"><span class="hi-dot"></span><span>${h}</span></div>`).join('')}
-      </div>
-
-      ${(v.pros?.length||v.cons?.length) ? `
-      <div class="pros-cons">
-        <div class="pc-box pros"><div class="pc-title">👍 Ưu điểm</div><ul class="pc-list pros">${(v.pros||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>
-        <div class="pc-box cons"><div class="pc-title">👎 Nhược điểm</div><ul class="pc-list cons">${(v.cons||[]).map(c=>`<li>${c}</li>`).join('')}</ul></div>
+        <span class="d-color-name" id="colorName">${v.images.colors[0]?.name||''}</span>
       </div>` : ''}
+    </div>
 
-      <div class="section-heading">🔧 Thông số kỹ thuật</div>
+    <div class="d-section">
+      <div class="d-section-title" id="sec-highlights">✨ Tính năng nổi bật</div>
+      <div class="highlights ${v.brand}">
+        ${(v.highlights||[]).map(h=>`<div class="h-item"><span class="h-dot"></span><span>${h}</span></div>`).join('')}
+      </div>
+    </div>
+
+    ${(v.pros?.length||v.cons?.length)?`
+    <div class="d-section">
+      <div class="d-section-title" id="sec-proscons">👍 Ưu & Nhược điểm</div>
+      <div class="pros-cons">
+        <div class="pc-box"><div class="pc-title pros">Ưu điểm</div><ul class="pc-list pros">${(v.pros||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>
+        <div class="pc-box"><div class="pc-title cons">Nhược điểm</div><ul class="pc-list cons">${(v.cons||[]).map(c=>`<li>${c}</li>`).join('')}</ul></div>
+      </div>
+    </div>`:''}
+
+    <div class="d-section">
+      <div class="d-section-title" id="sec-specs">🔧 Thông số kỹ thuật</div>
       <div class="spec-tabs">${tabsHTML}</div>
       <div>${panelsHTML}</div>
     </div>
 
-    <div class="detail-right">
-      <div class="sticky-card brand-${v.brand}">
-        <div class="sticky-price">${fmtPrice(v.pricing.base)}</div>
-        <div class="sticky-note">${v.pricing?.note||'Giá tham khảo'}</div>
-        <div class="sticky-specs">
-          <div class="ss-row"><span class="ss-label">⚡ Tốc độ tối đa</span><span class="ss-val">${pf.topSpeed?.value||'—'} km/h</span></div>
-          <div class="ss-row"><span class="ss-label">📏 Quãng đường/sạc</span><span class="ss-val">${pf.range?.value||'—'} km</span></div>
-          <div class="ss-row"><span class="ss-label">🔋 Pin</span><span class="ss-val">${bt.voltage?.value||'—'}V / ${bt.capacity?.value||'—'}Ah</span></div>
-          <div class="ss-row"><span class="ss-label">⏱ Sạc đầy</span><span class="ss-val">${bt.chargeTimeFull?.value||'—'} giờ</span></div>
-          <div class="ss-row"><span class="ss-label">🏋 Trọng lượng</span><span class="ss-val">${dim.weight?.value||'—'} kg</span></div>
-          <div class="ss-row"><span class="ss-label">🛡 Chống nước</span><span class="ss-val">${ft.waterproof?.value||'—'}</span></div>
-        </div>
-        <div class="sticky-divider"></div>
-        <div class="warranty-block">
-          <div class="warranty-title">🛠 Bảo hành</div>
-          ${Object.values(war).map(f=>`
-            <div class="warranty-row">
-              <span>${f.label}</span>
-              <span>${f.value||'—'}</span>
-            </div>`).join('')}
-        </div>
-      </div>
-    </div>
+    ${buildNavButtons(id)}
   </div>`;
 
-  const related = DB.vehicles.filter(x=>x.id!==id)
-    .filter(x=>x.brand===v.brand||Math.abs((x.pricing.base||0)-(v.pricing.base||0))<15000000)
-    .slice(0,3);
-  document.getElementById('relatedWrap').innerHTML = related.length ? `
-    <h2 class="related-title">Xe tương tự</h2>
-    <div class="related-grid">${related.map((r,i)=>renderCard(r,i)).join('')}</div>` : '';
+  // Render right sidebar price info
+  const toc = [
+    {id:'sec-overview',  label:'Tổng quan'},
+    {id:'sec-highlights',label:'Tính năng nổi bật'},
+    {id:'sec-proscons',  label:'Ưu & Nhược điểm'},
+    {id:'sec-specs',     label:'Thông số kỹ thuật'},
+  ];
+  renderToc(toc, v, ac, variantsHTML, pf, bt, dim, ft, war);
+}
+
+function buildNavButtons(currentId) {
+  const list = DB.vehicles;
+  const idx  = list.findIndex(v=>v.id===currentId);
+  const prev = idx > 0 ? list[idx-1] : null;
+  const next  = idx < list.length-1 ? list[idx+1] : null;
+  return `<div class="d-nav">
+    ${prev ? `<button class="d-nav-btn" onclick="showDetail('${prev.id}')">← ${prev.fullName}</button>` : '<span></span>'}
+    ${next ? `<button class="d-nav-btn next" onclick="showDetail('${next.id}')">${next.fullName} →</button>` : ''}
+  </div>`;
+}
+
+// ── RIGHT TOC ─────────────────────────────────────
+function renderToc(items, v, ac, variantsHTML, pf, bt, dim, ft, war) {
+  const tocEl  = document.getElementById('rightToc');
+  const tocList = document.getElementById('tocList');
+
+  if (!v) {
+    tocEl.style.display = 'none';
+    return;
+  }
+  tocEl.style.display = 'block';
+  tocList.innerHTML = items.map((item,i)=>
+    `<li class="toc-item ${i===0?'active':''}" onclick="scrollToSection('${item.id}',this)">${item.label}</li>`
+  ).join('');
+
+  // Price card in TOC area
+  const existingCard = document.getElementById('toc-price-card');
+  if (existingCard) existingCard.remove();
+
+  const card = document.createElement('div');
+  card.id = 'toc-price-card';
+  card.style.marginBottom = '1.25rem';
+  card.innerHTML = `
+    <div class="d-price-card">
+      <div class="d-price" style="color:${ac}">${fmtPrice(v?.pricing?.base)}</div>
+      <div class="d-price-note">${v?.pricing?.note||'Giá tham khảo'}</div>
+      ${variantsHTML||''}
+      <div class="d-quick-specs" style="margin-top:.75rem">
+        <div class="dqs-row"><span class="dqs-label">⚡ Tốc độ tối đa</span><span class="dqs-val">${pf?.topSpeed?.value||'—'} km/h</span></div>
+        <div class="dqs-row"><span class="dqs-label">📏 Quãng đường</span><span class="dqs-val">${pf?.range?.value||'—'} km</span></div>
+        <div class="dqs-row"><span class="dqs-label">🔋 Pin</span><span class="dqs-val">${bt?.voltage?.value||'—'}V/${bt?.capacity?.value||bt?.capacity?.value||'—'}</span></div>
+        <div class="dqs-row"><span class="dqs-label">🏋 Trọng lượng</span><span class="dqs-val">${dim?.weight?.value||'—'} kg</span></div>
+        <div class="dqs-row"><span class="dqs-label">🛡 Chống nước</span><span class="dqs-val">${ft?.waterproof?.value||'—'}</span></div>
+      </div>
+    </div>
+    <div class="d-warranty-card">
+      <div class="d-warranty-title">🛠 Bảo hành</div>
+      ${Object.values(war||{}).map(f=>`
+        <div class="d-warranty-row">
+          <span>${f.label}</span><span>${f.value||'—'}</span>
+        </div>`).join('')}
+    </div>
+  `;
+  tocEl.insertBefore(card, tocEl.querySelector('.toc-title'));
+}
+
+function scrollToSection(id, el) {
+  document.querySelectorAll('.toc-item').forEach(t=>t.classList.remove('active'));
+  if (el) el.classList.add('active');
+  const target = document.getElementById(id);
+  if (target) {
+    const y = target.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({top:y, behavior:'smooth'});
+  }
 }
 
 function switchTab(k) {
@@ -1042,13 +692,20 @@ function switchTab(k) {
 function pickColor(el, name) {
   document.querySelectorAll('.cswatch').forEach(s=>s.classList.remove('active'));
   el.classList.add('active');
-  const lbl = document.getElementById('colorLabel');
+  const lbl = document.getElementById('colorName');
   if (lbl) lbl.textContent = name;
 }
-function showCatalog() {
-  document.getElementById('view-catalog').style.display = 'block';
-  document.getElementById('view-detail').style.display = 'none';
-  window.scrollTo(0,0);
+
+// ── SIDEBAR TOGGLE ────────────────────────────────
+function toggleSidebar() {
+  const sb = document.getElementById('leftSidebar');
+  const ov = document.getElementById('sbOverlay');
+  const open = sb.classList.toggle('open');
+  ov.classList.toggle('open', open);
+}
+function closeSidebar() {
+  document.getElementById('leftSidebar').classList.remove('open');
+  document.getElementById('sbOverlay').classList.remove('open');
 }
 
 // ── SEARCH ───────────────────────────────────────
@@ -1059,10 +716,8 @@ function initSearch() {
     const q = inp.value.toLowerCase().trim();
     if (!q||!DB) { drop.classList.remove('open'); return; }
     const res = DB.vehicles.filter(v=>
-      v.fullName.toLowerCase().includes(q)||
-      v.brand.includes(q)||
-      v.series.toLowerCase().includes(q)||
-      (v.tags||[]).some(t=>t.includes(q))
+      v.fullName.toLowerCase().includes(q)||v.brand.includes(q)||
+      v.series.toLowerCase().includes(q)||(v.tags||[]).some(t=>t.includes(q))
     ).slice(0,6);
     if (!res.length) { drop.classList.remove('open'); return; }
     drop.innerHTML = res.map(v=>{
@@ -1071,7 +726,7 @@ function initSearch() {
         <span class="sdrop-brand" style="background:${ac}18;color:${ac}">${v.brand.toUpperCase()}</span>
         <div>
           <div class="sdrop-name">${v.fullName}</div>
-          <div class="sdrop-meta">${fmtPrice(v.pricing.base)} · ${v.specs.performance.fields.range?.value||'—'}km · ${v.specs.performance.fields.topSpeed?.value||'—'}km/h</div>
+          <div class="sdrop-meta">${fmtPrice(v.pricing?.base)} · ${v.specs.performance.fields.range?.value||'—'}km · ${v.specs.performance.fields.topSpeed?.value||'—'}km/h</div>
         </div>
       </div>`;
     }).join('');
@@ -1083,7 +738,7 @@ function initSearch() {
 }
 
 // ── DEMO DATA ────────────────────────────────────
-const DEMO_DATA = {"meta":{"version":"1.0","lastUpdated":"2025-03-10","totalModels":2},"brands":{"yadea":{"id":"yadea","name":"Yadea","accentColor":"#0099BB"},"vinfast":{"id":"vinfast","name":"VinFast","accentColor":"#D92B3A"}},"vehicles":[{"id":"yadea-g5","slug":"yadea-g5","brand":"yadea","series":"G Series","name":"G5","fullName":"Yadea G5","year":2024,"status":"active","tags":["ban-chay","lithium","cao-cap"],"badges":["BÁN CHẠY","2024"],"tagline":"Trải nghiệm cao cấp, pin lithium bền bỉ","description":"Yadea G5 là dòng xe tay ga điện cao cấp với pin Lithium NMC, thiết kế hiện đại, tích hợp khóa thông minh NFC và kết nối App Yadea.","images":{"main":"","gallery":[],"colors":[{"name":"Trắng ngọc","hex":"#F5F5F0"},{"name":"Đen bóng","hex":"#1A1A1A"},{"name":"Xanh navy","hex":"#1B3A6B"},{"name":"Đỏ thể thao","hex":"#C0392B"},{"name":"Vàng ánh kim","hex":"#D4AC0D"}]},"pricing":{"base":27990000,"currency":"VND","note":"Giá tham khảo","variants":[{"name":"Tiêu chuẩn","price":27990000}]},"rating":{"score":4.8,"count":1200},"specs":{"performance":{"label":"Vận hành","fields":{"topSpeed":{"label":"Tốc độ tối đa","value":70,"unit":"km/h"},"range":{"label":"Quãng đường/sạc","value":100,"unit":"km"},"motorPower":{"label":"Công suất động cơ","value":1200,"unit":"W"},"peakPower":{"label":"Công suất đỉnh","value":null,"unit":"W"},"torque":{"label":"Mô-men xoắn","value":55,"unit":"N·m"},"motorType":{"label":"Loại động cơ","value":"Hub Motor BLDC","unit":""},"driveMode":{"label":"Chế độ lái","value":"Eco / Standard","unit":""}}},"battery":{"label":"Pin & Sạc","fields":{"batteryType":{"label":"Loại pin","value":"Lithium NMC","unit":""},"voltage":{"label":"Điện áp","value":60,"unit":"V"},"capacity":{"label":"Dung lượng","value":26,"unit":"Ah"},"totalWh":{"label":"Tổng năng lượng","value":null,"unit":"Wh"},"chargeTimeFull":{"label":"Thời gian sạc đầy","value":"6–8","unit":"giờ"},"chargeTimeFast":{"label":"Sạc nhanh","value":null,"unit":"giờ"},"cycleLife":{"label":"Tuổi thọ pin","value":"≥1.000 chu kỳ","unit":""},"removable":{"label":"Pin tháo rời","value":false,"unit":""}}},"dimensions":{"label":"Kích thước","fields":{"length":{"label":"Chiều dài","value":1905,"unit":"mm"},"width":{"label":"Chiều rộng","value":700,"unit":"mm"},"height":{"label":"Chiều cao","value":1115,"unit":"mm"},"wheelbase":{"label":"Chiều dài cơ sở","value":null,"unit":"mm"},"seatHeight":{"label":"Chiều cao yên","value":765,"unit":"mm"},"groundClear":{"label":"Khoảng sáng gầm","value":null,"unit":"mm"},"weight":{"label":"Trọng lượng","value":102,"unit":"kg"},"maxLoad":{"label":"Tải trọng tối đa","value":150,"unit":"kg"}}},"chassis":{"label":"Khung & Phanh","fields":{"frontTire":{"label":"Lốp trước","value":"100/80-14","unit":""},"rearTire":{"label":"Lốp sau","value":"110/80-14","unit":""},"frontBrake":{"label":"Phanh trước","value":"Đĩa CBS","unit":""},"rearBrake":{"label":"Phanh sau","value":"Đĩa CBS","unit":""},"abs":{"label":"ABS","value":false,"unit":""},"frontSusp":{"label":"Giảm xóc trước","value":null,"unit":""},"rearSusp":{"label":"Giảm xóc sau","value":null,"unit":""}}},"features":{"label":"Trang bị","fields":{"lighting":{"label":"Đèn chiếu sáng","value":"LED toàn phần","unit":""},"drl":{"label":"Đèn DRL","value":null,"unit":""},"display":{"label":"Màn hình","value":"LCD TFT 5\"","unit":""},"bluetooth":{"label":"Bluetooth","value":true,"unit":""},"wifi":{"label":"WiFi","value":false,"unit":""},"esim":{"label":"eSIM / 4G","value":false,"unit":""},"gps":{"label":"GPS","value":false,"unit":""},"app":{"label":"App","value":"App Yadea","unit":""},"smartLock":{"label":"Khóa thông minh","value":"NFC","unit":""},"fingerprint":{"label":"Vân tay","value":false,"unit":""},"usbCharge":{"label":"Cổng USB","value":null,"unit":""},"trunkVolume":{"label":"Cốp xe","value":28,"unit":"lít"},"waterproof":{"label":"Chống nước","value":"IP67","unit":""}}},"warranty":{"label":"Bảo hành","fields":{"vehicle":{"label":"Bảo hành xe","value":"2 năm / 30.000 km","unit":""},"battery":{"label":"Bảo hành pin","value":"3 năm","unit":""},"motor":{"label":"Bảo hành động cơ","value":null,"unit":""}}}},"highlights":["Pin Lithium NMC — nhẹ hơn, tuổi thọ cao hơn pin Axit chì","Chống nước IP67 — an tâm đi trong mưa","Khóa NFC thông minh — mở khoá bằng thẻ","Kết nối App Yadea — theo dõi hành trình từ xa","Phanh CBS đôi — an toàn khi phanh gấp"],"pros":["Giá hợp lý cho phân khúc","Pin bền, quãng đường tốt","IP67 tốt nhất tầm giá"],"cons":["Không có eSIM/GPS","Sạc chậm hơn G6"]},{"id":"vinfast-theon-s","slug":"vinfast-theon-s","brand":"vinfast","series":"Theon Series","name":"Theon S","fullName":"VinFast Theon S","year":2024,"status":"active","tags":["cao-cap","esim","flagship","lithium"],"badges":["FLAGSHIP","2024"],"tagline":"Đẳng cấp châu Âu – Giá trị Việt Nam","description":"VinFast Theon S là xe tay ga điện cao cấp nhất của VinFast, thiết kế bởi chuyên gia Ý, tích hợp eSIM 4G, GPS, màn hình cảm ứng 7 inch và bảo hành pin 5 năm.","images":{"main":"","gallery":[],"colors":[{"name":"Trắng ngọc","hex":"#F0EEE8"},{"name":"Đen","hex":"#1C1C1C"},{"name":"Đỏ","hex":"#C0392B"},{"name":"Xanh dương","hex":"#1A3A6B"},{"name":"Vàng kem","hex":"#D4AC0D"},{"name":"Xám bạc","hex":"#8E9298"}]},"pricing":{"base":55900000,"currency":"VND","note":"Giá tham khảo","variants":[{"name":"Tiêu chuẩn","price":55900000}]},"rating":{"score":4.8,"count":650},"specs":{"performance":{"label":"Vận hành","fields":{"topSpeed":{"label":"Tốc độ tối đa","value":79,"unit":"km/h"},"range":{"label":"Quãng đường/sạc","value":134,"unit":"km"},"motorPower":{"label":"Công suất động cơ","value":3800,"unit":"W"},"peakPower":{"label":"Công suất đỉnh","value":5000,"unit":"W"},"torque":{"label":"Mô-men xoắn","value":90,"unit":"N·m"},"motorType":{"label":"Loại động cơ","value":"BLDC 3-phase","unit":""},"driveMode":{"label":"Chế độ lái","value":"Eco / Standard / Sport","unit":""}}},"battery":{"label":"Pin & Sạc","fields":{"batteryType":{"label":"Loại pin","value":"Lithium NMC","unit":""},"voltage":{"label":"Điện áp","value":72,"unit":"V"},"capacity":{"label":"Dung lượng","value":30,"unit":"Ah"},"totalWh":{"label":"Tổng năng lượng","value":2160,"unit":"Wh"},"chargeTimeFull":{"label":"Thời gian sạc đầy","value":"6.5","unit":"giờ"},"chargeTimeFast":{"label":"Sạc nhanh (20→80%)","value":"3.5","unit":"giờ"},"cycleLife":{"label":"Tuổi thọ pin","value":null,"unit":""},"removable":{"label":"Pin tháo rời","value":false,"unit":""}}},"dimensions":{"label":"Kích thước","fields":{"length":{"label":"Chiều dài","value":1885,"unit":"mm"},"width":{"label":"Chiều rộng","value":750,"unit":"mm"},"height":{"label":"Chiều cao","value":1140,"unit":"mm"},"wheelbase":{"label":"Chiều dài cơ sở","value":1330,"unit":"mm"},"seatHeight":{"label":"Chiều cao yên","value":795,"unit":"mm"},"groundClear":{"label":"Khoảng sáng gầm","value":155,"unit":"mm"},"weight":{"label":"Trọng lượng","value":125,"unit":"kg"},"maxLoad":{"label":"Tải trọng tối đa","value":150,"unit":"kg"}}},"chassis":{"label":"Khung & Phanh","fields":{"frontTire":{"label":"Lốp trước","value":"110/70-13","unit":""},"rearTire":{"label":"Lốp sau","value":"130/70-13","unit":""},"frontBrake":{"label":"Phanh trước","value":"Đĩa 240mm CBS","unit":""},"rearBrake":{"label":"Phanh sau","value":"Đĩa 220mm CBS","unit":""},"abs":{"label":"ABS","value":false,"unit":""},"frontSusp":{"label":"Giảm xóc trước","value":"Phuộc lồng đôi","unit":""},"rearSusp":{"label":"Giảm xóc sau","value":"Giảm xóc đôi","unit":""}}},"features":{"label":"Trang bị","fields":{"lighting":{"label":"Đèn chiếu sáng","value":"LED Full + DRL","unit":""},"drl":{"label":"Đèn DRL","value":true,"unit":""},"display":{"label":"Màn hình","value":"TFT 7\" cảm ứng","unit":""},"bluetooth":{"label":"Bluetooth","value":"5.0","unit":""},"wifi":{"label":"WiFi","value":true,"unit":""},"esim":{"label":"eSIM / 4G","value":true,"unit":""},"gps":{"label":"GPS","value":true,"unit":""},"app":{"label":"App","value":"App VinFast","unit":""},"smartLock":{"label":"Khóa thông minh","value":"NFC + Từ xa","unit":""},"fingerprint":{"label":"Vân tay","value":false,"unit":""},"usbCharge":{"label":"Cổng USB","value":"USB-C 18W","unit":""},"trunkVolume":{"label":"Cốp xe","value":30,"unit":"lít"},"waterproof":{"label":"Chống nước","value":"IP67","unit":""}}},"warranty":{"label":"Bảo hành","fields":{"vehicle":{"label":"Bảo hành xe","value":"3 năm / 60.000 km","unit":""},"battery":{"label":"Bảo hành pin","value":"5 năm / 100.000 km","unit":""},"motor":{"label":"Bảo hành động cơ","value":null,"unit":""}}}},"highlights":["Thiết kế bởi chuyên gia Ý — thẩm mỹ châu Âu tinh tế","eSIM 4G tích hợp — kết nối liên tục không cần điện thoại","Màn hình cảm ứng 7 inch — bản đồ, âm nhạc, thông báo","Động cơ 3.800W / đỉnh 5.000W — mạnh nhất phân khúc","Quãng đường 134km WMTC — xa nhất dòng VinFast","Bảo hành pin 5 năm / 100.000km — cam kết dài hạn"],"pros":["Thiết kế đẹp chuẩn Ý","eSIM + GPS đầy đủ","Bảo hành tốt nhất"],"cons":["Giá cao nhất phân khúc","Nặng 125kg"]}]};
+const DEMO_DATA = {"meta":{"version":"1.0","lastUpdated":"2026-03-10","totalModels":2},"brands":{"yadea":{"id":"yadea","name":"Yadea","accentColor":"#FF5F00"},"vinfast":{"id":"vinfast","name":"VinFast","accentColor":"#1464f4"}},"vehicles":[{"id":"yadea-osta","slug":"yadea-osta","brand":"yadea","series":"Osta Series","name":"Osta","fullName":"Yadea Osta","year":2026,"status":"active","tags":["flagship","neo-retro","lithium","tcs","gps","cao-cap"],"badges":["MỚI 2026","FLAGSHIP"],"tagline":"Phong cách Neo-Retro, công nghệ cao cấp như ô tô","description":"Yadea Osta là xe máy điện flagship của Yadea tại Việt Nam, ra mắt ngày 1/3/2026. Thiết kế Neo-Retro, tích hợp TCS, HDC, GPS, màn hình TFT Full-color và khóa thông minh EasyGO.","images":{"main":"assets/vehicles/yadea-osta-main.jpg","gallery":[],"colors":[{"name":"Trắng sữa","hex":"#F5F0E8"},{"name":"Đen mờ","hex":"#1C1C1C"},{"name":"Xanh rêu","hex":"#4A5C3F"},{"name":"Be kem","hex":"#D4C4A0"},{"name":"Xám bạc","hex":"#9CA3AF"}]},"pricing":{"base":27490000,"currency":"VND","note":"Osta H+: 27,49 triệu | Osta P: 31,99 triệu","variants":[{"name":"Osta H+ (72V30Ah / 120km)","price":27490000},{"name":"Osta P (72V45Ah / 180km)","price":31990000}]},"rating":{"score":4.7,"count":320},"specs":{"performance":{"label":"Vận hành","fields":{"topSpeed":{"label":"Tốc độ tối đa","value":65,"unit":"km/h"},"range":{"label":"Quãng đường/sạc","value":180,"unit":"km"},"motorPower":{"label":"Công suất động cơ","value":1500,"unit":"W"},"peakPower":{"label":"Công suất đỉnh","value":2750,"unit":"W"},"torque":{"label":"Mô-men xoắn","value":null,"unit":"N·m"},"motorType":{"label":"Loại động cơ","value":"Hub-motor TTFAR","unit":""},"driveMode":{"label":"Chế độ lái","value":"Eco / Free / Sport","unit":""}}},"battery":{"label":"Pin & Sạc","fields":{"batteryType":{"label":"Loại pin","value":"Lithium-ion","unit":""},"voltage":{"label":"Điện áp","value":72,"unit":"V"},"capacity":{"label":"Dung lượng (bản P)","value":45,"unit":"Ah"},"totalWh":{"label":"Tổng năng lượng","value":3240,"unit":"Wh"},"chargeTimeFull":{"label":"Thời gian sạc đầy","value":null,"unit":"giờ"},"cycleLife":{"label":"Tuổi thọ pin","value":"≥1.200 chu kỳ","unit":""},"removable":{"label":"Pin tháo rời","value":true,"unit":""}}},"dimensions":{"label":"Kích thước","fields":{"length":{"label":"Chiều dài","value":1910,"unit":"mm"},"width":{"label":"Chiều rộng","value":710,"unit":"mm"},"height":{"label":"Chiều cao","value":1340,"unit":"mm"},"seatHeight":{"label":"Chiều cao yên","value":770,"unit":"mm"},"weight":{"label":"Trọng lượng","value":92,"unit":"kg"},"maxLoad":{"label":"Tải trọng tối đa","value":null,"unit":"kg"}}},"chassis":{"label":"Khung & Phanh","fields":{"frontBrake":{"label":"Phanh trước","value":"Đĩa","unit":""},"rearBrake":{"label":"Phanh sau","value":"Đĩa","unit":""},"abs":{"label":"ABS","value":false,"unit":""}}},"features":{"label":"Trang bị","fields":{"display":{"label":"Màn hình","value":"TFT Full-color, chống chói","unit":""},"esim":{"label":"eSIM / 4G","value":false,"unit":""},"gps":{"label":"GPS tích hợp","value":true,"unit":""},"app":{"label":"App","value":"App Yadea","unit":""},"smartLock":{"label":"Khóa thông minh","value":"EasyGO Smart Key","unit":""},"usbCharge":{"label":"Cổng sạc USB","value":"2x USB","unit":""},"waterproof":{"label":"Chống nước pin","value":"IPX7","unit":""},"tcs":{"label":"TCS (kiểm soát lực kéo)","value":true,"unit":""},"hdc":{"label":"HDC (hỗ trợ đổ đèo)","value":true,"unit":""},"hillHold":{"label":"Hill-hold (giữ phanh ngang dốc)","value":true,"unit":""},"ota":{"label":"Cập nhật OTA","value":true,"unit":""}}},"warranty":{"label":"Bảo hành","fields":{"vehicle":{"label":"Bảo hành xe","value":null,"unit":""},"battery":{"label":"Bảo hành pin","value":null,"unit":""},"motor":{"label":"Bảo hành động cơ","value":null,"unit":""}}}},"highlights":["Thiết kế Neo-Retro — phong cách cổ điển hiện đại","Quãng đường 180km/sạc (bản P) — đủ chạy Hà Nội–Hạ Long","TCS + HDC + Hill-hold — 3 hệ thống an toàn lần đầu trên xe điện tầm giá","Màn hình TFT Full-color — phản chiếu bản đồ, nghe nhạc","GPS tích hợp + định vị từ xa — hàng rào điện tử","EasyGO Smart Key — mở khóa Bluetooth, cập nhật OTA","Pin tháo rời — hỗ trợ đổi pin nhanh","BMS hiển thị pin chính xác đến 1%"],"pros":["Giá từ 27,49 triệu — ngang Honda Vision","TCS/HDC/Hill-hold hiếm có tầm giá","Quãng đường 180km xa nhất phân khúc","GPS + bản đồ + màn hình TFT","Pin tháo rời"],"cons":["Chưa có ABS","Thông tin bảo hành chưa công bố đầy đủ"]},{"id":"vinfast-feliz-ii","slug":"vinfast-feliz-ii","brand":"vinfast","series":"Feliz Series","name":"Feliz II","fullName":"VinFast Feliz II","year":2026,"status":"active","tags":["pho-thong","lfp","doi-pin","do-thi"],"badges":["MỚI 2026","ĐỔI PIN"],"tagline":"Xe đô thị thực dụng — đổi pin tại trạm, đi xa không lo hết điện","description":"VinFast Feliz II 2026 nâng cấp lên 2 pin LFP tháo rời hoàn toàn, hỗ trợ đổi pin tại trạm V-Green. Quãng đường 156km, động cơ BLDC Inhub 3.000W, chuẩn chống nước IP67.","images":{"main":"assets/vehicles/vinfast-feliz-ii-main.jpg","gallery":[],"colors":[{"name":"Trắng Ngọc Trai","hex":"#F5F0E8"},{"name":"Đen bóng","hex":"#1A1A1A"},{"name":"Xanh Oliu","hex":"#6B7C4A"},{"name":"Vàng Cát","hex":"#D4B483"}]},"pricing":{"base":24900000,"currency":"VND","note":"Thuê pin: 24,9tr | Mua kèm 1 pin: 30,5tr | Thuê pin: 175.000đ/tháng","variants":[{"name":"Feliz II — Thuê pin","price":24900000},{"name":"Feliz II — Mua kèm 1 pin LFP","price":30500000}]},"rating":{"score":4.6,"count":890},"specs":{"performance":{"label":"Vận hành","fields":{"topSpeed":{"label":"Tốc độ tối đa","value":70,"unit":"km/h"},"range":{"label":"Quãng đường (2 pin)","value":156,"unit":"km"},"rangeSingle":{"label":"Quãng đường (1 pin)","value":82,"unit":"km"},"motorPower":{"label":"Công suất động cơ","value":3000,"unit":"W"},"motorType":{"label":"Loại động cơ","value":"BLDC Inhub","unit":""},"driveMode":{"label":"Chế độ lái","value":"Eco / Sport","unit":""}}},"battery":{"label":"Pin & Sạc","fields":{"batteryType":{"label":"Loại pin","value":"LFP (Lithium Iron Phosphate)","unit":""},"capacity":{"label":"Dung lượng / pin","value":1.5,"unit":"kWh"},"totalWh":{"label":"Tổng năng lượng (2 pin)","value":3.0,"unit":"kWh"},"chargeTimeFull":{"label":"Thời gian sạc đầy","value":"6.5","unit":"giờ"},"removable":{"label":"Pin tháo rời","value":true,"unit":""},"swappable":{"label":"Đổi pin tại trạm","value":true,"unit":""},"numBattery":{"label":"Số pin","value":"2 pin tháo rời","unit":""}}},"dimensions":{"label":"Kích thước","fields":{"length":{"label":"Chiều dài","value":1920,"unit":"mm"},"width":{"label":"Chiều rộng","value":694,"unit":"mm"},"height":{"label":"Chiều cao","value":1140,"unit":"mm"},"seatHeight":{"label":"Chiều cao yên","value":780,"unit":"mm"},"groundClear":{"label":"Khoảng sáng gầm","value":141,"unit":"mm"},"maxLoad":{"label":"Tải trọng tối đa","value":130,"unit":"kg"}}},"chassis":{"label":"Khung & Phanh","fields":{"frontTire":{"label":"Lốp trước","value":"90/90-14","unit":""},"rearTire":{"label":"Lốp sau","value":"120/70-14","unit":""},"frontBrake":{"label":"Phanh trước","value":"Đĩa","unit":""},"rearBrake":{"label":"Phanh sau","value":"Tang trống","unit":""},"abs":{"label":"ABS","value":false,"unit":""},"regenBrake":{"label":"Phanh tái sinh","value":true,"unit":""}}},"features":{"label":"Trang bị","fields":{"lighting":{"label":"Đèn chiếu sáng","value":"LED Projector 3 thấu kính","unit":""},"display":{"label":"Đồng hồ","value":"Kỹ thuật số toàn phần","unit":""},"bluetooth":{"label":"Bluetooth","value":false,"unit":""},"esim":{"label":"eSIM / 4G","value":false,"unit":""},"gps":{"label":"GPS","value":false,"unit":""},"trunkVolume":{"label":"Cốp xe","value":"34L (15L khi lắp pin phụ)","unit":""},"waterproof":{"label":"Chống nước","value":"IP67 (0,5m/30 phút)","unit":""}}},"warranty":{"label":"Bảo hành","fields":{"vehicle":{"label":"Bảo hành xe","value":"6 năm","unit":""},"battery":{"label":"Bảo hành pin","value":"8 năm","unit":""},"charging":{"label":"Miễn phí sạc","value":"Đến 31/5/2027 tại V-Green","unit":""},"swapFree":{"label":"Miễn phí đổi pin","value":"Đến 30/6/2028 (tài xế DV)","unit":""}}}},"highlights":["2 pin LFP tháo rời — đổi pin tại trạm V-Green chỉ 9.000đ/lần","Quãng đường 156km/sạc với 2 pin","Pin LFP an toàn — chống cháy nổ, tuổi thọ cao","Phanh tái sinh — thu hồi năng lượng khi giảm ga","Bảo hành xe 6 năm + pin 8 năm","Chống nước IP67 (0,5m/30 phút)","Cốp 34L rộng nhất phân khúc"],"pros":["Giá thuê pin 24,9 triệu — rẻ nhất phân khúc","Đổi pin tại trạm — không cần chờ sạc","Bảo hành pin 8 năm","Pin LFP an toàn","Cốp 34L siêu rộng"],"cons":["Không có smartkey, GPS, App","Phanh sau tang trống","Tăng tốc chậm hơn đối thủ","Cốp còn 15L khi lắp pin phụ"]}]};
 
 loadData();
 </script>
